@@ -4,7 +4,7 @@
 
 @layer base {
 	body {
-		@apply bg-[#f6f7fb];
+		@apply bg-primaryLight;
 	}
 	h1,
 	h2,
@@ -39,7 +39,7 @@
 	}
 
 	.button {
-		@apply bg-primaryLighter hover:bg-primary inline-block rounded-md border border-transparent px-8 py-3 font-semibold text-white ring-offset-0 transition-colors duration-300 active:ring-offset-purple-100;
+		@apply inline-block rounded-md border border-transparent bg-primaryLighter px-8 py-3 font-semibold text-white ring-offset-0 transition-colors duration-300 hover:bg-primary active:ring-offset-purple-100;
 	}
 
 	.button--secondary {
@@ -47,7 +47,7 @@
 	}
 
 	.button--alt {
-		@apply bg-accent hover:bg-accentDark border-transparent text-black;
+		@apply border-transparent bg-accent text-black hover:bg-accentDark;
 	}
 
 	::selection {
