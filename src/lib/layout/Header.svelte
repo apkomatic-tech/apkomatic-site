@@ -65,13 +65,13 @@
 	}
 </script>
 
-<header class="text-primaryDark">
+<header class="bg-primaryDark text-primaryLight">
 	<div class="wrapper flex items-center justify-between px-6 py-4">
 		<SiteLogo />
 		<!-- Mobile menu toggle -->
 		<button
 			type="button"
-			class="translate-x-[6px] p-[6px] text-[40px] text-primaryDark sm:hidden"
+			class="block translate-x-[6px] p-[6px] text-[40px] text-primaryLight sm:hidden"
 			on:click={toggleMenu}
 			aria-label="Menu"
 			aria-controls="nav-menu"
@@ -83,10 +83,10 @@
 		<nav class="hidden grid-flow-col sm:grid sm:gap-5 md:gap-8">
 			{#each navLinks as { id, label, href }}
 				<a
-					class="hover: flex justify-between leading-none transition-colors duration-300 {$page.url
-						.pathname === href
-						? 'text-primary'
-						: 'text-slate-700'}"
+					class="flex justify-between leading-none text-primaryLight transition-opacity duration-300 {$page
+						.url.pathname === href
+						? 'text-opacity-100'
+						: 'text-opacity-80'}"
 					{href}>{label}</a
 				>
 			{/each}
@@ -97,10 +97,9 @@
 			<div
 				in:slide={{ axis: 'x', duration: 180, easing: quartIn }}
 				out:slide={{ axis: 'x', duration: 180, easing: quartOut }}
-				class="fixed right-0 top-0 z-50 h-full w-full bg-primaryDark px-6 pb-2 sm:hidden"
+				class="fixed right-0 top-0 z-50 h-full w-full bg-[#201047] px-6 pb-2 sm:hidden"
 			>
-				<div class="flex items-start justify-between py-4">
-					<SiteLogo />
+				<div class="flex h-[96px] items-start justify-end">
 					<button
 						type="button"
 						class="inline-flex translate-x-[6px] items-center place-self-center p-[6px] text-center text-4xl leading-none text-primaryLight"
@@ -110,9 +109,7 @@
 						<Icon icon="iconamoon:close" />
 					</button>
 				</div>
-				<nav
-					class="mt-6 grid grid-flow-row-dense gap-1 border-t border-white border-opacity-10 pt-4"
-				>
+				<nav class="grid grid-flow-row-dense gap-1 border-t border-white border-opacity-10 pt-4">
 					{#each navLinks as { id, label, href }}
 						<a
 							class="inline-block rounded-md border border-transparent px-4 py-2 font-sans text-base font-semibold text-purple-100 transition duration-150 ease-in-out hover:border-[rgba(0,0,0,.15)] hover:bg-[rgba(0,0,0,.16)] hover:text-white hover:text-opacity-100 {$page
