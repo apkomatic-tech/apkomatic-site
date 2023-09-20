@@ -14,6 +14,8 @@ export async function load() {
 				thumb: sanityImage('thumb'),
 				order: q.number()
 			})
+			.order('order asc')
+			.slice(0, 1)
 	);
 	const testimonials = await runQuery(
 		q('*').filter('_type == "testimonial"').grab({

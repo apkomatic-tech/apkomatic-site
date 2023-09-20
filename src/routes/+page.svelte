@@ -4,18 +4,6 @@
 	import heroImage from '../images/layered-waves-a.svg';
 	import testimonialsImage from '../images/yellow-blob.svg';
 	export let data;
-
-	$: projects = data.projects.sort((a, b) => {
-		// order projects using "order" key
-		if (a.order > b.order) return 1;
-		if (a.order < b.order) return -1;
-		return 0;
-	});
-
-	$: testimonials = data.testimonials;
-
-	$: console.log(projects);
-	$: console.log(testimonials);
 </script>
 
 <section class="hero md:py-18 relative flex items-center overflow-hidden py-10 sm:py-20">
@@ -54,7 +42,7 @@
 		<!-- spacer -->
 		<div class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-accent sm:mx-auto sm:my-12" />
 
-		{#each projects as project}
+		{#each data.projects as project}
 			<ProjectCard
 				item={{
 					id: project._id,
@@ -135,7 +123,7 @@
 		<h3 class="text-4xl text-black md:text-center">What clients say about us</h3>
 		<div class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-black sm:mx-auto sm:my-12" />
 		<div class="grid gap-[30px] md:grid-cols-2 lg:grid-cols-3">
-			{#each testimonials as testimonial}
+			{#each data.testimonials as testimonial}
 				<Testimonial data={testimonial} />
 			{/each}
 		</div>
