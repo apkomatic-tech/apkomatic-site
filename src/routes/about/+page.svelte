@@ -2,7 +2,7 @@
 	import PageHeader from '$lib/components/layout/PageHeader.svelte';
 </script>
 
-<PageHeader title="About" />
+<PageHeader title="About Apkomatic" />
 <section class="generic-content mx-auto my-12 max-w-screen-lg px-2">
 	<div class="flex flex-col gap-8">
 		<div class="row">
