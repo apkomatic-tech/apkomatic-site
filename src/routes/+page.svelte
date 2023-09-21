@@ -11,15 +11,18 @@
 <section class="hero md:py-18 relative flex items-center overflow-hidden py-10 sm:py-20">
 	<img aria-hidden class="absolute inset-0 h-full w-full object-cover" src={heroImage} alt="" />
 	<div class="relative mx-auto px-6">
-		<h1 class="mb-6 leading-none">
-			<div
-				class="pr-1 text-center text-[58px] font-semibold tracking-tight text-white sm:text-[68px] md:text-[86px] lg:text-[100px]"
-			>
-				Custom Web <br /> Solutions.
-			</div>
+		<div
+			class="mb-5 text-center font-serif text-2xl text-[34px] font-semibold uppercase text-primaryLight"
+		>
+			Apkomatic
+		</div>
+		<h1
+			class="mb-6 pr-1 text-center text-[58px] font-semibold leading-none tracking-tight text-accentLight sm:text-[68px] md:text-[86px] lg:text-[100px]"
+		>
+			Custom Web <br /> Solutions.
 		</h1>
 		<div class="mb-8">
-			<p class="my-2 max-w-[800px] text-center text-slate-300">
+			<p class="my-2 max-w-[800px] text-center text-[20px] text-slate-300">
 				Unleash the full potential of your online presence with our expert web development services.
 				From stunning website designs to custom web applications, we can bring your digital vision
 				to life.
@@ -156,6 +159,11 @@
 
 <style>
 	.hero {
-		min-height: calc(100vh - 96px);
+		min-height: 50vh;
+	}
+	@media screen and (min-width: 640px) {
+		.hero {
+			min-height: 75vh;
+		}
 	}
 </style>
