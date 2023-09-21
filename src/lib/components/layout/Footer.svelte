@@ -1,0 +1,23 @@
+<script>
+	import Icon from '@iconify/svelte';
+</script>
+
+<footer>
+	<div class="wrapper border-t border-slate-200 py-8">
+		<div class="text-center text-sm text-gray-500">
+			&copy; {new Date().getFullYear()}, Apkomatic
+		</div>
+		<nav class="mt-2 flex justify-center">
+			<a
+				class="inline-block text-2xl text-gray-700 transition-all duration-200 hover:text-primary"
+				title="Apkomatic Instagram"
+				aria-label="Apkomatic Instagram"
+				rel="noreferrer noopener"
+				target="_blank"
+				href="https://instagram.com/apkomatic"
+			>
+				<Icon icon="mdi:instagram" />
+			</a>
+		</nav>
+	</div>
+</footer>
