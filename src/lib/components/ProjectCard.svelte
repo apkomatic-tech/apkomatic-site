@@ -20,7 +20,9 @@
 	<div class="flex items-center md:col-span-2">
 		<div class="md:px-6 md:py-3 lg:px-12">
 			<h2 class="mb-6 font-sans text-3xl md:text-4xl">{item.name}</h2>
-			<p class="text-black text-opacity-80">{item.description}</p>
+			{#if item.description}
+				<p class="text-black text-opacity-80">{item.description}</p>
+			{/if}
 			<a href={item.detailUrl} class="button group mt-8">
 				View Details <span
 					class="inline-block transition-all duration-300 group-hover:translate-x-[3px]"
