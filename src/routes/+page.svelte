@@ -30,10 +30,10 @@
 		</div>
 
 		<div class="grid auto-cols-max grid-flow-col justify-center gap-4">
-			<button class="button group inline-flex items-center">
+			<a href="/projects" class="button group inline-flex items-center">
 				<span class="mr-2">See Our Projects</span>{' '}
 				<!-- <HiArrowRight class="origin-center translate-x-0 transition-transform duration-200 group-hover:translate-x-1" /> -->
-			</button>
+			</a>
 			<a href="/contact" class="button button--alt text-center"> Contact Us </a>
 		</div>
 	</div>
@@ -54,8 +54,8 @@
 					href="/projects/{project.slug}"
 					class="group opacity-90 transition-opacity duration-300 hover:opacity-100"
 				>
-					<div class="mb-4">
-						<img src={imageUrl} alt={project.name} />
+					<div class="mb-4 overflow-hidden rounded-md shadow-sm drop-shadow-sm">
+						<img src={imageUrl} alt={project.name} loading="lazy" />
 					</div>
 					<div class="flex items-center gap-2 text-xl font-bold">
 						{project.name}<Icon
