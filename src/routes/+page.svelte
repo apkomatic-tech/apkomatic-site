@@ -1,8 +1,10 @@
 <script lang="ts">
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import Testimonial from '$lib/components/Testimonial.svelte';
+	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder';
+	import Icon from '@iconify/svelte';
 	import heroImage from '../images/layered-waves-a.svg';
 	import testimonialsImage from '../images/yellow-blob.svg';
+
 	export let data;
 </script>
 
@@ -42,17 +44,33 @@
 		<!-- spacer -->
 		<div class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-accent sm:mx-auto sm:my-12" />
 
-		{#each data.projects as project}
-			<ProjectCard
-				item={{
-					id: project._id,
-					name: project.name,
-					description: project.description,
-					detailUrl: `/projects/${project.slug}`,
-					imageSource: project.thumb
-				}}
-			/>
-		{/each}
+		<div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+			{#each data.projects as project}
+				{@const imageUrl = buildUrlFromImageSource(project.thumb, { width: 1000, height: 600 })}
+				<a
+					href="/projects/{project.slug}"
+					class="group opacity-90 transition-opacity duration-300 hover:opacity-100"
+				>
+					<div class="mb-4">
+						<img src={imageUrl} alt={project.name} />
+					</div>
+					<div class="flex items-center gap-2 text-xl font-bold">
+						{project.name}<Icon
+							class="transition-transform duration-150 group-hover:translate-x-1 group-focus:translate-x-1"
+							icon="mdi:arrow-right"
+						/>
+					</div>
+				</a>
+			{/each}
+		</div>
+		<div>
+			<a class="button group inline-flex items-center gap-2 text-center" href="/projects"
+				>See All Projects <Icon
+					icon="mdi:arrow-right"
+					class="text-inherit transition-transform duration-150 group-hover:translate-x-1 group-focus:translate-x-1"
+				/></a
+			>
+		</div>
 	</div>
 </section>
 

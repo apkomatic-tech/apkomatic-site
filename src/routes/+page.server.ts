@@ -9,13 +9,12 @@ export async function load() {
 			.grab({
 				_id: q.string(),
 				name: q.string(),
-				description: q.string(),
 				slug: q.slug('slug'),
 				thumb: sanityImage('thumb'),
 				order: q.number()
 			})
 			.order('order asc')
-			.slice(0, 1)
+			.slice(0, 2)
 	);
 	const testimonials = await runQuery(
 		q('*').filter('_type == "testimonial"').grab({
