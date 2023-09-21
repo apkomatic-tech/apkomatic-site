@@ -4,8 +4,33 @@
 	import Icon from '@iconify/svelte';
 	import heroImage from '../images/layered-waves-a.svg';
 	import testimonialsImage from '../images/yellow-blob.svg';
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 
 	export let data;
+	let projectsElement: HTMLElement | null = null;
+
+	function scrollToProjects() {
+		// if not in browser environment or JS is disabled
+		if (!browser) {
+			console.log('JS is disabled');
+			return goto('/projects');
+		}
+
+		if (projectsElement === null) {
+			console.warn('Scroll element does not exist.');
+			return;
+		}
+
+		const { y } = projectsElement.getBoundingClientRect();
+		const top = Math.floor(y);
+		setTimeout(() => {
+			window.scrollTo({
+				top,
+				behavior: 'smooth'
+			});
+		}, 200);
+	}
 </script>
 
 <section class="hero md:py-18 relative flex items-center overflow-hidden py-10 sm:py-20">
@@ -30,9 +55,16 @@
 		</div>
 
 		<div class="grid auto-cols-max grid-flow-col justify-center gap-4">
-			<a href="/projects" class="button group inline-flex items-center">
-				<span class="mr-2">See Our Projects</span>{' '}
-				<!-- <HiArrowRight class="origin-center translate-x-0 transition-transform duration-200 group-hover:translate-x-1" /> -->
+			<a
+				href="/projects"
+				class="button group inline-flex items-center gap-2"
+				on:click|preventDefault={scrollToProjects}
+			>
+				See Our Projects
+				<Icon
+					class="transition-transform duration-150 group-hover:translate-y-[1px] group-focus:translate-y-[1px]"
+					icon="mdi:arrow-down"
+				/>
 			</a>
 			<a href="/contact" class="button button--alt text-center"> Contact Us </a>
 		</div>
@@ -40,7 +72,7 @@
 </section>
 
 <!-- Featured Projects -->
-<section class="bg-white py-10 sm:py-24">
+<section class="bg-white py-10 sm:py-24" bind:this={projectsElement}>
 	<div class="wrapper px-6 md:px-2">
 		<h2 class="mb-1 text-2xl text-primaryDark sm:text-center">Work</h2>
 		<h3 class="text-4xl text-black md:text-center">Expertly Designed. Expertly Built.</h3>
@@ -163,7 +195,7 @@
 	}
 	@media screen and (min-width: 640px) {
 		.hero {
-			min-height: 75vh;
+			min-height: calc(100vh - 96px);
 		}
 	}
 </style>
