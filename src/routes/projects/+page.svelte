@@ -6,7 +6,7 @@
 </script>
 
 <PageHeader title="Projects" />
-<div class="generic-content relative mx-auto my-12 max-w-7xl p-8">
+<div class="page-content">
 	<div class="grid grid-cols-1 gap-8 py-8 md:grid-cols-2 lg:grid-cols-3">
 		{#each data.projects as project}
 			{@const imageUrl = buildUrlFromImageSource(project.thumb, { width: 1000, height: 600 })}

@@ -25,15 +25,13 @@
 </script>
 
 <PageHeader title="Frequently Asked Questions" />
-<section class="my-24">
-	<div class="wrapper-narrow">
-		{#each faqItems as item}
-			<section class="grid gap-2 md:mb-8 md:grid-cols-3 md:gap-12">
-				<h2 class="border-r-0 border-gray-300 font-semibold md:col-span-1 md:border-r md:pr-8">
-					{item.question}
-				</h2>
-				<p class="text-black text-opacity-75 md:col-span-2">{item.answer}</p>
-			</section>
-		{/each}
-	</div>
+<section class="page-content">
+	{#each faqItems as item}
+		<section class="grid gap-2 md:mb-8 md:grid-cols-3 md:gap-12">
+			<h2 class="border-r-0 border-gray-300 font-semibold md:col-span-1 md:border-r md:pr-8">
+				{item.question}
+			</h2>
+			<p class="text-black text-opacity-75 md:col-span-2">{item.answer}</p>
+		</section>
+	{/each}
 </section>

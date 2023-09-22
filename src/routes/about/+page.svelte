@@ -3,7 +3,7 @@
 </script>
 
 <PageHeader title="About Apkomatic" />
-<section class="generic-content mx-auto my-12 max-w-screen-lg px-2">
+<section class="page-content">
 	<div class="flex flex-col gap-8">
 		<div class="row">
 			<h2 class="text-2xl">Who we are</h2>

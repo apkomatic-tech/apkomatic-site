@@ -19,22 +19,26 @@
 		@apply mx-auto max-w-[800px] px-2;
 	}
 
-	.generic-content p {
+	.page-content {
+		@apply mx-auto my-6 max-w-screen-lg px-6 sm:my-12 sm:px-2;
+	}
+
+	.page-content p {
 		@apply mb-3;
 	}
 
-	.generic-content ul {
+	.page-content ul {
 		@apply list-inside list-disc pl-3;
 	}
 
-	.generic-content p,
-	.generic-content ul {
+	.page-content p,
+	.page-content ul {
 		@apply text-opacity-80;
 	}
 
-	.generic-content h1,
-	.generic-content h2,
-	.generic-content h3 {
+	.page-content h1,
+	.page-content h2,
+	.page-content h3 {
 		@apply my-5;
 	}
 
