@@ -2,8 +2,7 @@ import { FORMSPREE_URL } from '$env/static/private';
 import { z } from 'zod';
 import { superValidate } from 'sveltekit-superforms/server';
 import { MESSAGE_CHAR_LIMIT } from '$lib/config';
-import { sleep } from '$lib/utilities/sleep';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 
 const schema = z.object({
 	contactName: z.string({ required_error: 'Name is required' }).min(1, 'Name is required'),
@@ -19,14 +18,14 @@ const schema = z.object({
 
 export const load = async () => {
 	const form = await superValidate(schema);
-	await sleep(2000);
+
 	return {
 		form
 	};
 };
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, fetch }) => {
 		const form = await superValidate(request, schema);
 
 		if (!form.valid) {
@@ -35,6 +34,28 @@ export const actions = {
 			};
 		}
 
-		throw redirect(303, '/contact/confirmation');
+		// send contact information via FormSpree
+		if (FORMSPREE_URL) {
+			const contactRequest = await fetch(FORMSPREE_URL, {
+				method: 'POST',
+				body: JSON.stringify(form.data),
+				headers: {
+					Accept: 'application/json'
+				}
+			});
+
+			// on successful submission redirect to confirmation page
+			if (contactRequest.ok) {
+				throw redirect(303, '/contact/confirmation');
+			} else {
+				throw error(401, {
+					message: 'We are unable to process your request. Please try again later.'
+				});
+			}
+		} else {
+			throw error(500, {
+				message: 'We are unable to process your request. Please try again later.'
+			});
+		}
 	}
 };
