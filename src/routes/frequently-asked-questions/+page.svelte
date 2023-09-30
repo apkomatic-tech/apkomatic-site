@@ -24,7 +24,7 @@
 	];
 </script>
 
-<PageHeader title="Frequently Asked Questions" />
+<PageHeader title="Frequently Asked Questions" transparent={true} />
 <section class="page-content">
 	{#each faqItems as item}
 		<section class="grid gap-2 md:mb-8 md:grid-cols-3 md:gap-12">
