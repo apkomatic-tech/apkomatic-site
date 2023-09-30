@@ -2,11 +2,11 @@
 	import PageHeader from '$lib/components/layout/PageHeader.svelte';
 </script>
 
-<PageHeader title="About Apkomatic" />
+<PageHeader title="About Apkomatic" transparent={true} />
 <section class="page-content">
 	<div class="flex flex-col gap-8">
 		<div class="row">
-			<h2 class="text-2xl">Who we are</h2>
+			<h2 class="text-2xl"><span>Who we are</span></h2>
 			<p>
 				We are Apkomatic, a one-stop shop for all things web development. We are a team of skilled
 				and experienced developers who are passionate about creating beautiful, functional websites
@@ -14,7 +14,7 @@
 			</p>
 		</div>
 		<div class="row">
-			<h2 class="text-2xl">Why work with us</h2>
+			<h2 class="text-2xl"><span>Why work with us</span></h2>
 			<p>
 				We understand that every business is unique, which is why we work closely with our clients
 				to understand their needs and goals, and create a customized solution that is tailored to
@@ -23,7 +23,7 @@
 			</p>
 		</div>
 		<div class="row">
-			<h2 class="text-2xl">Our Team</h2>
+			<h2 class="text-2xl"><span>Our Team</span></h2>
 			<p>
 				Our team is well-versed in the latest technologies and best practices, ensuring that your
 				website is not only visually stunning but also fully optimized for performance and security.
@@ -33,7 +33,7 @@
 		</div>
 
 		<div class="row">
-			<h2 class="text-2xl">Our Mission</h2>
+			<h2 class="text-2xl"><span>Our Mission</span></h2>
 			<p>
 				We pride ourselves on our commitment to customer service and strive to build long-term
 				relationships with our clients. We are always available to answer any questions you may have
@@ -47,5 +47,8 @@
 	.row {
 		@apply items-center gap-16 lg:grid;
 		grid-template-columns: minmax(auto, 300px) auto;
+	}
+	.row h2 > span {
+		@apply inline-block border-b-2 border-accent pb-[5px];
 	}
 </style>
