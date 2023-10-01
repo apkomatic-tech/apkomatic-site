@@ -45,6 +45,7 @@
 		"@iconify/svelte": "^3.1.4",
 		"@sanity/client": "^6.4.12",
 		"@sanity/image-url": "^1.0.2",
+		"@tailwindcss/container-queries": "^0.1.1",
 		"groqd": "^0.15.9"
 	}
 }
