@@ -2,8 +2,8 @@
 	import PageHeader from '$lib/components/layout/PageHeader.svelte';
 </script>
 
-<PageHeader title="About Apkomatic" transparent={true} />
 <section class="page-content">
+	<h1 class="page-title mb-6 text-4xl md:mb-16 md:text-5xl">About Apkomatic</h1>
 	<div class="flex flex-col gap-8">
 		<div class="row">
 			<h2 class="text-2xl"><span>Who we are</span></h2>

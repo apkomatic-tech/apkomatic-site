@@ -36,9 +36,9 @@
 		@apply text-opacity-80;
 	}
 
-	.page-content h1,
-	.page-content h2,
-	.page-content h3 {
+	.page-content h1:not(.page-title),
+	.page-content h2:not(.page-title),
+	.page-content h3:not(.page-title) {
 		@apply my-5;
 	}
 
