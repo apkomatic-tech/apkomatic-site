@@ -66,7 +66,7 @@
 					icon="mdi:arrow-down"
 				/>
 			</a>
-			<a href="/contact" class="button button--alt text-center"> Contact Us </a>
+			<a href="/contact" class="button button--ghostAlt text-center"> Contact Us </a>
 		</div>
 	</div>
 </section>

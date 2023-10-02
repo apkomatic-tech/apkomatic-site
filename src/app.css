@@ -54,6 +54,18 @@
 		@apply border-transparent bg-accent text-black hover:bg-accentDark;
 	}
 
+	.button--ghost {
+		@apply border-primary bg-transparent text-primary hover:bg-transparent focus:bg-transparent;
+	}
+
+	.button--ghostAlt {
+		@apply border-accentDark bg-transparent text-accentDark hover:bg-transparent focus:bg-transparent;
+	}
+
+	.button--withIcon {
+		@apply inline-flex items-center justify-center gap-2;
+	}
+
 	::selection {
 		@apply bg-accent text-black;
 	}
