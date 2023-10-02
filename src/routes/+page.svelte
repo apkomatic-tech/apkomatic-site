@@ -5,20 +5,13 @@
 	import heroImage from '../images/layered-waves-a.svg';
 	import testimonialsImage from '../images/yellow-blob.svg';
 	import { browser } from '$app/environment';
-	import { goto } from '$app/navigation';
 
 	export let data;
 	let projectsElement: HTMLElement | null = null;
 
 	function scrollToProjects() {
-		// if not in browser environment or JS is disabled
-		if (!browser) {
-			console.log('JS is disabled');
-			return goto('/projects');
-		}
-
 		if (projectsElement === null) {
-			console.warn('Scroll element does not exist.');
+			console.error('Scroll target element does not exist.');
 			return;
 		}
 
@@ -55,17 +48,24 @@
 		</div>
 
 		<div class="grid auto-cols-max grid-flow-col justify-center gap-4">
-			<a
-				href="/projects"
-				class="button group inline-flex items-center gap-2"
-				on:click|preventDefault={scrollToProjects}
-			>
-				See Our Projects
-				<Icon
-					class="transition-transform duration-150 group-hover:translate-y-[1px] group-focus:translate-y-[1px]"
-					icon="mdi:arrow-down"
-				/>
-			</a>
+			{#if browser}
+				<button
+					type="button"
+					class="button group inline-flex items-center gap-2"
+					on:click={scrollToProjects}
+				>
+					See Our Projects
+					<Icon
+						class="transition-transform duration-150 group-hover:translate-y-[1px] group-focus:translate-y-[1px]"
+						icon="mdi:arrow-down"
+					/>
+				</button>
+			{:else}
+				<a href="/projects" class="button group inline-flex items-center gap-2">
+					See Our Projects
+				</a>
+			{/if}
+
 			<a href="/contact" class="button button--ghostAlt text-center"> Contact Us </a>
 		</div>
 	</div>
