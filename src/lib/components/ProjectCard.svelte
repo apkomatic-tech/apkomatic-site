@@ -8,11 +8,18 @@
 		detailUrl?: string;
 		client?: string;
 		imageSource?: SanityImageSource;
+		imageWidth?: number;
+		imageHeight?: number;
 	};
 
 	export let item: ProjectItemProps;
+	const imageWidth = item.imageWidth || 1600;
+	const imageHeight = item.imageHeight || 1200;
 	let imageUrl = item.imageSource
-		? buildUrlFromImageSource(item.imageSource, { width: 1600, height: 1200 })
+		? buildUrlFromImageSource(item.imageSource, {
+				width: imageWidth,
+				height: imageHeight
+		  })
 		: null;
 </script>
 
@@ -33,7 +40,7 @@
 	</div>
 	{#if imageUrl}
 		<div class="overflow-hidden md:col-span-3">
-			<img src={imageUrl} alt={item.name} width={1600} height={1200} />
+			<img src={imageUrl} alt={item.name} width={imageWidth} height={imageHeight} />
 		</div>
 	{/if}
 </article>
