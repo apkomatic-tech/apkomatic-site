@@ -15,7 +15,7 @@
 
 <section class="wrapper my-12">
 	<div class="grid gap-10 lg:grid-cols-2">
-		<div class="relative h-auto rounded-md sm:max-h-max">
+		<div class="relative h-auto rounded-md bg-gray-400 sm:max-h-max">
 			<img
 				class="max-w-full"
 				width={projectImageWidth}

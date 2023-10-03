@@ -69,4 +69,14 @@
 	::selection {
 		@apply bg-accent text-black;
 	}
+
+	/* view transitions (experimental) */
+
+	@media (prefers-reduced-motion) {
+		:root::view-transition-group(*),
+		:root::view-transition-old(*),
+		:root::view-transition-new(*) {
+			animation: none !important;
+		}
+	}
 }
