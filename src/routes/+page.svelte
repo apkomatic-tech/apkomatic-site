@@ -90,16 +90,15 @@
 						<img src={imageUrl} alt={project.name} loading="lazy" />
 					</div>
 					<div class="flex items-center gap-2 text-xl font-bold">
-						{project.name}<Icon
-							class="transition-transform duration-150 group-hover:translate-x-1 group-focus:translate-x-1"
-							icon="mdi:arrow-right"
-						/>
+						{project.name}
 					</div>
 				</a>
 			{/each}
 		</div>
-		<div>
-			<a class="button group inline-flex items-center gap-2 text-center" href="/projects"
+		<div class="mt-12 flex justify-center">
+			<a
+				class="button group inline-flex w-full items-center justify-center gap-2 md:w-auto md:px-20"
+				href="/projects"
 				>See All Projects <Icon
 					icon="mdi:arrow-right"
 					class="text-inherit transition-transform duration-150 group-hover:translate-x-1 group-focus:translate-x-1"
