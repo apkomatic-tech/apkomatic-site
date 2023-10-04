@@ -30,12 +30,12 @@
 	<img aria-hidden class="absolute inset-0 h-full w-full object-cover" src={heroImage} alt="" />
 	<div class="relative mx-auto px-6">
 		<div
-			class="mb-5 text-center font-serif text-2xl text-[34px] font-semibold uppercase text-primaryLight"
+			class="mb-5 text-center font-serif text-2xl font-semibold uppercase text-primaryLight md:text-3xl"
 		>
 			Apkomatic
 		</div>
 		<h1
-			class="mb-6 pr-1 text-center text-[58px] font-semibold leading-none tracking-tight text-accentLight sm:text-[68px] md:text-[86px] lg:text-[100px]"
+			class="mb-6 pr-1 text-center text-[48px] font-semibold leading-none tracking-tight text-accentLight sm:text-[68px] md:text-[86px] lg:text-[100px]"
 		>
 			Custom Web <br /> Solutions.
 		</h1>
@@ -47,11 +47,11 @@
 			</p>
 		</div>
 
-		<div class="grid auto-cols-max grid-flow-col justify-center gap-4">
+		<div class="grid gap-4 sm:auto-cols-max sm:grid-flow-col sm:justify-center">
 			{#if browser}
 				<button
 					type="button"
-					class="button group inline-flex items-center gap-2"
+					class="button group inline-flex items-center justify-center gap-2"
 					on:click={scrollToProjects}
 				>
 					See Our Projects
