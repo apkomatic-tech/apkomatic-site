@@ -65,7 +65,7 @@
 	}
 </script>
 
-<header class="bg-primaryDark text-primaryLight site-header">
+<header class="site-header relative z-[9999] bg-primaryDark text-primaryLight">
 	<div class="wrapper flex items-center justify-between px-6 py-4">
 		<SiteLogo />
 		<!-- Mobile menu toggle -->
@@ -95,8 +95,8 @@
 		<!-- Mobile Navigation -->
 		{#if isMobileMenuOpen}
 			<div
-				in:slide={{ axis: 'x', duration: 180, easing: quartIn }}
-				out:slide={{ axis: 'x', duration: 180, easing: quartOut }}
+				in:slide={{ axis: 'x', duration: 100, easing: quartIn }}
+				out:slide={{ axis: 'x', duration: 100, easing: quartOut }}
 				class="fixed right-0 top-0 z-50 h-full w-full bg-[#201047] px-6 pb-2 sm:hidden"
 			>
 				<div class="flex h-[96px] items-start justify-end">
