@@ -10,9 +10,3 @@
 		<p class="mx-auto max-w-lg px-4 {transparent ? '' : 'text-gray-100'}">{subtext}</p>
 	{/if}
 </header>
-
-<style>
-	header {
-		view-transition-name: site-header;
-	}
-</style>

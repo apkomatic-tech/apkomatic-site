@@ -65,7 +65,7 @@
 	}
 </script>
 
-<header class="bg-primaryDark text-primaryLight">
+<header class="bg-primaryDark text-primaryLight site-header">
 	<div class="wrapper flex items-center justify-between px-6 py-4">
 		<SiteLogo />
 		<!-- Mobile menu toggle -->
@@ -124,3 +124,9 @@
 		{/if}
 	</div>
 </header>
+
+<style>
+	.site-header {
+		view-transition-name: site-header;
+	}
+</style>
