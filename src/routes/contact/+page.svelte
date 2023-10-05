@@ -13,14 +13,12 @@
 </script>
 
 <div class="mx-auto max-w-screen-sm px-4">
-	<header class="mb-6 mt-10">
-		<h1 class="mb-2 text-3xl">Contact Us</h1>
-		<p class="text-slate-600">
-			Ready to discuss your next web development project or have questions about our services? We're
-			here to help! Please reach out to us using the contact form below, and we'll get back to you
-			as soon as possible.
-		</p>
-	</header>
+	<PageHeader
+		title="Contact Us"
+		subtext="Ready to discuss your next web development project or have questions about our services? We're
+	here to help! Please reach out to us using the contact form below, and we'll get back to you
+	as soon as possible."
+	/>
 	<section class="my-6">
 		<form use:enhance name="contact" method="post">
 			<div class="relative mb-6">
