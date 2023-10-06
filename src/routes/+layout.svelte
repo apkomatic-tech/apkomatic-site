@@ -3,6 +3,7 @@
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import '../app.css';
 	import { onNavigate } from '$app/navigation';
+	import { COMPANY_NAME } from '$lib/config';
 
 	onNavigate((navigation) => {
 		// Do nothing if view transition API is not supported
@@ -20,7 +21,7 @@
 </script>
 
 <svelte:head>
-	<title>Apkomatic</title>
+	<title>{COMPANY_NAME}</title>
 	<link
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@600;700&display=swap"

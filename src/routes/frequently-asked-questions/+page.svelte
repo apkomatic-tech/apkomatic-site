@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PageHeader from '$lib/components/layout/PageHeader.svelte';
+	import { COMPANY_NAME } from '$lib/config';
 
 	const faqItems: Array<{ question: string; answer: string }> = [
 		{
@@ -23,6 +24,10 @@
 		}
 	];
 </script>
+
+<svelte:head>
+	<title>{COMPANY_NAME} - FAQ</title>
+</svelte:head>
 
 <section class="page-content">
 	<PageHeader title="Frequently Asked Questions" />

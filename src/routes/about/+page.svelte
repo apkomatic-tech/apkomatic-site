@@ -1,6 +1,11 @@
 <script>
 	import PageHeader from '$lib/components/layout/PageHeader.svelte';
+	import { COMPANY_NAME } from '$lib/config';
 </script>
+
+<svelte:head>
+	<title>{COMPANY_NAME} - About</title>
+</svelte:head>
 
 <section class="page-content">
 	<PageHeader title="About Apkomatic" />

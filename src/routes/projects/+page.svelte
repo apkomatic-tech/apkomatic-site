@@ -1,11 +1,16 @@
 <script lang="ts">
 	import PageHeader from '$lib/components/layout/PageHeader.svelte';
+	import { COMPANY_NAME } from '$lib/config/index.js';
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder.js';
 
 	export let data;
 	const imageWidth = 1024;
 	const imageHeight = 800;
 </script>
+
+<svelte:head>
+	<title>{COMPANY_NAME} - Projects</title>
+</svelte:head>
 
 <div class="page-content">
 	<PageHeader title="Projects" />

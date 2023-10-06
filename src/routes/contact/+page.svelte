@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms/client';
 	import PageHeader from '$lib/components/layout/PageHeader.svelte';
-	import { MESSAGE_CHAR_LIMIT } from '$lib/config';
+	import { COMPANY_NAME, MESSAGE_CHAR_LIMIT } from '$lib/config';
 	import Icon from '@iconify/svelte';
 
 	export let data;
@@ -11,6 +11,10 @@
 		}
 	});
 </script>
+
+<svelte:head>
+	<title>{COMPANY_NAME} - Contact</title>
+</svelte:head>
 
 <div class="mx-auto max-w-screen-sm px-4">
 	<PageHeader

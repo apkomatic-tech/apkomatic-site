@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { COMPANY_NAME } from '$lib/config/index.js';
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder.js';
 	import Icon from '@iconify/svelte';
 
@@ -12,6 +13,10 @@
 		height: projectImageHeight
 	});
 </script>
+
+<svelte:head>
+	<title>{COMPANY_NAME} - Project - {project.name}</title>
+</svelte:head>
 
 <section class="wrapper my-12">
 	<div class="grid gap-10 lg:grid-cols-2">
