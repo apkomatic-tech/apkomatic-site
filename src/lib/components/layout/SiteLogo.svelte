@@ -3,10 +3,15 @@
 </script>
 
 <a
-	class="relative z-[9999] inline-flex items-center font-serif text-3xl font-bold uppercase tracking-tight text-opacity-90"
+	class="relative z-[9999] inline-flex items-center font-serif font-bold uppercase tracking-tight text-opacity-90"
 	href="/"
 >
 	<img src={logo} class="inline-block h-16 w-16" alt="Apkomatic Logo" />
-	<span class="ml-[5px] hidden text-primaryLight md:inline-block" aria-hidden> pkomatic </span>
-	<span class="sr-only">Apkomatic</span>
+	<span class="ml-[5px] text-[1.6rem] text-primaryLight md:text-3xl" aria-hidden> pkomatic </span>
+	<span
+		aria-hidden
+		class="ml-[3px] inline-block translate-y-[1px] text-[1.3rem] lowercase text-accent md:translate-y-[3px]"
+		>Tech</span
+	>
+	<span class="sr-only">Apkomatic Tech</span>
 </a>
