@@ -4,6 +4,7 @@
 	import '../app.css';
 	import { onNavigate } from '$app/navigation';
 	import { COMPANY_NAME } from '$lib/config';
+	import Analytics from '$lib/components/Analytics.svelte';
 
 	onNavigate((navigation) => {
 		// Do nothing if view transition API is not supported
@@ -28,6 +29,7 @@
 	/>
 </svelte:head>
 
+<Analytics />
 <Header />
 <main>
 	<slot />
