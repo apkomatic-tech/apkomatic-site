@@ -80,14 +80,21 @@
 			<Icon icon="jam:menu" />
 		</button>
 		<!-- Desktop Navigation -->
-		<nav class="hidden grid-flow-col sm:grid sm:gap-5 md:gap-8">
+		<nav class="hidden grid-flow-col sm:grid sm:gap-3 md:gap-8">
 			{#each navLinks as { id, label, href }}
+				{@const isCurrentPage = $page.url.pathname === href}
 				<a
-					class="flex justify-between leading-none text-primaryLight transition-opacity duration-300 {$page
-						.url.pathname === href
-						? 'text-opacity-100'
-						: 'text-opacity-80'}"
-					{href}>{label}</a
+					class="relative leading-none transition-opacity duration-300 hover:opacity-75 {isCurrentPage
+						? 'text-accent'
+						: 'text-primaryLight'}"
+					{href}
+					>{label}
+					{#if isCurrentPage}
+						<span
+							aria-hidden
+							class="marker bottom-0 left-0 right-0 block h-[3px] translate-y-[3px] rounded-sm bg-accent"
+						/>
+					{/if}</a
 				>
 			{/each}
 		</nav>
@@ -97,7 +104,7 @@
 			<div
 				in:slide={{ axis: 'x', duration: 100, easing: quartIn }}
 				out:slide={{ axis: 'x', duration: 100, easing: quartOut }}
-				class="fixed right-0 top-0 z-50 h-full w-full bg-[#201047] px-6 pb-2 sm:hidden"
+				class="fixed right-0 top-0 z-50 h-full w-full bg-primaryDark px-6 pb-2 sm:hidden"
 			>
 				<div class="flex h-[96px] items-start justify-end">
 					<button
@@ -128,5 +135,8 @@
 <style>
 	.site-header {
 		view-transition-name: site-header;
+	}
+	.marker {
+		view-transition-name: indicator;
 	}
 </style>
