@@ -17,12 +17,16 @@
 </svelte:head>
 
 <div class="mx-auto max-w-screen-sm px-4">
-	<PageHeader
-		title="Contact Us"
-		subtext="Ready to discuss your next web development project or have questions about our services? We're
-	here to help! Please reach out to us using the contact form below, and we'll get back to you
-	as soon as possible."
-	/>
+	<PageHeader title="Contact Us">
+		<p class="mt-4 text-slate-700" slot="message">
+			Ready to discuss your next web development project or have questions about our services? We're
+			here to help! Please reach out to us using the contact form below or email us directly at <a
+				href="mailto:apkomatic@gmail.com?subject={encodeURI('Contact request')}"
+				class="inline-block border-b-4 border-accentLight text-primary transition-colors duration-300 hover:bg-accentLight"
+				>apkomatic@gmail.com</a
+			>. We'll get back to you as soon as possible.
+		</p>
+	</PageHeader>
 	<section class="my-6">
 		<form use:enhance name="contact" method="post">
 			<div class="relative mb-6">
