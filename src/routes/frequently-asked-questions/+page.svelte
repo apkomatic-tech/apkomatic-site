@@ -1,5 +1,4 @@
 <script lang="ts">
-	import PageHeader from '$lib/components/layout/PageHeader.svelte';
 	import { COMPANY_NAME } from '$lib/config';
 
 	type FaqRow = {
@@ -48,8 +47,8 @@
 	<title>{COMPANY_NAME} - FAQ</title>
 </svelte:head>
 
-<section class="page-content max-w-screen-md">
-	<PageHeader title="Frequently Asked Questions" />
+<section class="wrapper-narrow">
+	<h1 class="page-title">Frequently Asked Questions</h1>
 	<dl class="grid gap-2">
 		{#each rows as row, index}
 			<div class="border-b border-slate-300 first:border-t">

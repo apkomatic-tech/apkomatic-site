@@ -9,37 +9,48 @@
 	h1,
 	h2,
 	h3 {
-		@apply font-serif font-bold;
+		@apply mb-4 mt-8 font-serif font-bold;
 	}
 
-	.wrapper {
-		@apply mx-auto max-w-[1300px] px-2;
-	}
-	.wrapper-narrow {
-		@apply mx-auto max-w-[800px] px-2;
-	}
-
-	.page-content {
-		@apply mx-auto my-6 max-w-screen-lg px-6 sm:my-12 sm:px-2;
-	}
-
-	.page-content p {
+	p {
 		@apply mb-3;
 	}
 
-	.page-content ul {
+	ul {
 		@apply list-inside list-disc pl-3;
 	}
 
-	.page-content p,
-	.page-content ul {
+	p,
+	ul {
 		@apply text-opacity-80;
 	}
 
-	.page-content h1:not(.page-title),
-	.page-content h2:not(.page-title),
-	.page-content h3:not(.page-title) {
-		@apply my-5;
+	::selection {
+		@apply bg-accent text-black;
+	}
+
+	/* view transitions (experimental) */
+
+	@media (prefers-reduced-motion) {
+		:root::view-transition-group(*),
+		:root::view-transition-old(*),
+		:root::view-transition-new(*) {
+			animation: none !important;
+		}
+	}
+}
+
+@layer components {
+	.wrapper {
+		@apply mx-auto mb-16 max-w-[1300px] px-2;
+	}
+
+	.wrapper-narrow {
+		@apply mx-auto mb-16 max-w-[800px] px-2;
+	}
+
+	.page-title {
+		@apply my-16 text-4xl md:text-5xl;
 	}
 
 	.button {
@@ -65,18 +76,7 @@
 	.button--withIcon {
 		@apply inline-flex items-center justify-center gap-2;
 	}
-
-	::selection {
-		@apply bg-accent text-black;
-	}
-
-	/* view transitions (experimental) */
-
-	@media (prefers-reduced-motion) {
-		:root::view-transition-group(*),
-		:root::view-transition-old(*),
-		:root::view-transition-new(*) {
-			animation: none !important;
-		}
+	.link {
+		@apply inline-block border-b-4 border-accentLight pl-[1px] pr-[1px] text-primary transition-colors duration-300 hover:bg-accentLight;
 	}
 }

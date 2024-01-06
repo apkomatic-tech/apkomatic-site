@@ -1,5 +1,4 @@
 <script lang="ts">
-	import PageHeader from '$lib/components/layout/PageHeader.svelte';
 	import { COMPANY_NAME } from '$lib/config/index.js';
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder.js';
 
@@ -12,8 +11,8 @@
 	<title>{COMPANY_NAME} - Projects</title>
 </svelte:head>
 
-<div class="page-content">
-	<PageHeader title="Projects" />
+<div class="wrapper">
+	<h1 class="page-title">Projects</h1>
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 		{#each data.projects as project}
 			{@const imageUrl = buildUrlFromImageSource(project.thumb, {

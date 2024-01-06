@@ -66,7 +66,7 @@
 </script>
 
 <header class="site-header relative z-[9999] bg-primaryDark text-primaryLight">
-	<div class="wrapper flex items-center justify-between px-6 py-4">
+	<div class="wrapper mb-0 flex items-center justify-between px-6 py-4">
 		<SiteLogo />
 		<!-- Mobile menu toggle -->
 		<button
