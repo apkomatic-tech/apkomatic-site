@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms/client';
-	import PageHeader from '$lib/components/layout/PageHeader.svelte';
 	import { COMPANY_NAME, MESSAGE_CHAR_LIMIT } from '$lib/config';
 	import Icon from '@iconify/svelte';
 
@@ -16,13 +15,15 @@
 	<title>{COMPANY_NAME} - Contact</title>
 </svelte:head>
 
-<div class="mx-auto max-w-screen-sm px-4">
-	<PageHeader
-		title="Contact Us"
-		subtext="Ready to discuss your next web development project or have questions about our services? We're
-	here to help! Please reach out to us using the contact form below, and we'll get back to you
-	as soon as possible."
-	/>
+<div class="wrapper-narrow">
+	<h1 class="page-title mb-8">Contact Us</h1>
+	<p class="mb-10 mt-4 text-slate-700">
+		Ready to discuss your next web development project or have questions about our services? We're
+		here to help! Please reach out to us using the contact form below or email us directly at <a
+			href="mailto:apkomatic@gmail.com?subject={encodeURI('Contact request')}"
+			class="link">apkomatic@gmail.com</a
+		>. We'll get back to you as soon as possible.
+	</p>
 	<section class="my-6">
 		<form use:enhance name="contact" method="post">
 			<div class="relative mb-6">
