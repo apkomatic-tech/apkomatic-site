@@ -2,7 +2,7 @@
 	import Testimonial from '$lib/components/Testimonial.svelte';
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder';
 	import Icon from '@iconify/svelte';
-	import heroImage from '../images/layered-waves-a.svg';
+	import heroImage from '../images/hero.svg';
 	import testimonialsImage from '../images/yellow-blob.svg';
 	import { browser } from '$app/environment';
 
@@ -26,47 +26,42 @@
 	}
 </script>
 
-<section class="hero md:py-18 relative flex items-center overflow-hidden py-10 sm:py-20">
-	<img aria-hidden class="absolute inset-0 h-full w-full object-cover" src={heroImage} alt="" />
-	<div class="relative mx-auto px-6">
-		<div
-			class="mb-5 text-center font-serif text-2xl font-semibold uppercase text-primaryLight md:text-3xl"
-		>
-			Apkomatic
-		</div>
-		<h1
-			class="mb-6 pr-1 text-center text-[48px] font-semibold leading-none tracking-tight text-accentLight sm:text-[68px] md:text-[86px] lg:text-[100px]"
-		>
-			Custom Web <br /> Solutions.
-		</h1>
-		<div class="mb-8">
-			<p class="my-2 max-w-[800px] text-center text-[20px] text-slate-300">
+<section class="bg-primaryLight py-10 sm:py-24 lg:min-h-[60dvh]">
+	<div class="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
+		<div class="mr-auto place-self-center lg:col-span-7">
+			<h1 class="mb-8 text-4xl font-extrabold tracking-tight text-primaryDark lg:text-5xl">
+				We <span class="text-accentDark">speak</span> your language. <br /> We
+				<span class="text-primary">code</span> your vision.
+			</h1>
+			<p class="mb-6 max-w-2xl text-lg text-slate-500 lg:mb-8 lg:text-xl">
 				Unleash the full potential of your online presence with our expert web development services.
 				From stunning website designs to custom web applications, we can bring your digital vision
 				to life.
 			</p>
+			<div class="flex gap-4">
+				{#if browser}
+					<button
+						type="button"
+						class="button button--withIcon button--ghost group inline-flex items-center justify-center gap-2"
+						on:click={scrollToProjects}
+					>
+						See Our Projects
+						<Icon
+							class="transition-transform duration-150 group-hover:translate-y-[1px] group-focus:translate-y-[1px]"
+							icon="mdi:arrow-down"
+						/>
+					</button>
+				{:else}
+					<a href="/projects" class="button group inline-flex items-center gap-2">
+						See Our Projects
+					</a>
+				{/if}
+
+				<a href="/contact" class="button text-center"> Contact Us </a>
+			</div>
 		</div>
-
-		<div class="grid gap-4 sm:auto-cols-max sm:grid-flow-col sm:justify-center">
-			{#if browser}
-				<button
-					type="button"
-					class="button group inline-flex items-center justify-center gap-2"
-					on:click={scrollToProjects}
-				>
-					See Our Projects
-					<Icon
-						class="transition-transform duration-150 group-hover:translate-y-[1px] group-focus:translate-y-[1px]"
-						icon="mdi:arrow-down"
-					/>
-				</button>
-			{:else}
-				<a href="/projects" class="button group inline-flex items-center gap-2">
-					See Our Projects
-				</a>
-			{/if}
-
-			<a href="/contact" class="button button--ghostAlt text-center"> Contact Us </a>
+		<div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
+			<img src={heroImage} alt="mockup" />
 		</div>
 	</div>
 </section>
@@ -187,14 +182,3 @@
 		alt=""
 	/>
 </div>
-
-<style>
-	.hero {
-		min-height: 50vh;
-	}
-	@media screen and (min-width: 640px) {
-		.hero {
-			min-height: calc(100vh - 96px);
-		}
-	}
-</style>
