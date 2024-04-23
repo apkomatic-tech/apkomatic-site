@@ -1,5 +1,6 @@
 <script>
 	import { COMPANY_NAME } from '$lib/config';
+	import rocketImage from '/src/images/coding-rocket.svg';
 </script>
 
 <svelte:head>
@@ -7,54 +8,54 @@
 </svelte:head>
 
 <section class="wrapper">
-	<h1 class="page-title">About Apkomatic</h1>
-	<div class="flex flex-col gap-8">
-		<div class="row">
-			<h2 class="text-2xl lg:m-0"><span>Who we are</span></h2>
-			<p>
-				We are Apkomatic, a one-stop shop for all things web development. We are a team of skilled
-				and experienced developers who are passionate about creating beautiful, functional websites
-				that help businesses like yours succeed online.
-			</p>
-		</div>
-		<div class="row">
-			<h2 class="text-2xl lg:m-0"><span>Why work with us</span></h2>
-			<p>
-				We understand that every business is unique, which is why we work closely with our clients
-				to understand their needs and goals, and create a customized solution that is tailored to
-				their specific requirements. Whether you need a simple brochure website or a complex web
-				application, we have the skills and expertise to deliver. <a class="link" href="/projects"
-					>Check out our work &gt;</a
-				>
-			</p>
-		</div>
-		<div class="row">
-			<h2 class="text-2xl lg:m-0"><span>Our Team</span></h2>
-			<p>
-				Our team is well-versed in the latest technologies and best practices, ensuring that your
-				website is not only visually stunning but also fully optimized for performance and security.
-				We also use responsive design techniques to ensure that your website looks great on any
-				device.
-			</p>
-		</div>
+	<h1 class="page-title">About Us</h1>
+	<div class="grid gap-16 lg:grid-cols-[2fr_minmax(400px,_1fr)]">
+		<div class="space-y-6">
+			<div class="row">
+				<h2 class="mb-6 text-2xl"><span>Who we are</span></h2>
+				<p>
+					We're passionate about creating websites that truly connect with businesses like yours.
+					Our experience and knowledge of the latest trends and techniques ensures that we craft
+					solutions that are tailored to your unique needs. We're not just developers, we're
+					collaborators who are committed to making a real difference in the online presence of your
+					business. Let's work together to create something truly special.
+				</p>
+			</div>
+			<div class="row">
+				<h2 class="mb-6 text-2xl"><span>Why work with us</span></h2>
+				<p>
+					We take the time to listen to our clients and craft a personalized solution that perfectly
+					meets their unique needs. We believe that every business has a unique voice and story, and
+					we are committed to helping them share that with the world. Whether you need a simple
+					brochure site or a complex web application, we have the skills and passion to bring your
+					vision to life. Take a look at some of our <a href="/projects">previous work</a> and see the
+					difference we can make.
+				</p>
+			</div>
 
-		<div class="row">
-			<h2 class="text-2xl lg:m-0"><span>Our Mission</span></h2>
-			<p>
-				We pride ourselves on our commitment to customer service and strive to build long-term
-				relationships with our clients. We are always available to answer any questions you may have
-				and provide support throughout the development process and beyond.
-			</p>
+			<div class="row">
+				<h2 class="mb-6 text-2xl"><span>Our Mission</span></h2>
+				<p>
+					We're all about creating a deep and meaningful connection with our clients. We take pride
+					in delivering exceptional service and ensuring that you feel special and valued at every
+					step of your journey with us. From the initial consultation to the final launch, we're
+					here to support and guide you every step of the way, and beyond. Our unwavering dedication
+					and commitment to our clients is what sets us apart, and it's what will make your online
+					presence truly memorable and truly special in a way that only you can achieve.
+				</p>
+			</div>
 		</div>
+		<figure class="hidden lg:block">
+			<img src={rocketImage} class="w-full" alt="" aria-hidden />
+		</figure>
 	</div>
 </section>
 
 <style lang="postcss">
-	.row {
-		@apply items-center gap-16 lg:grid lg:min-h-[120px];
-		grid-template-columns: minmax(auto, 300px) auto;
+	.wrapper {
+		@apply px-6;
 	}
 	.row h2 > span {
-		@apply inline-block border-b-2 border-accent pb-[5px];
+		@apply inline-block border-b-[6px] border-accent pb-[5px];
 	}
 </style>

@@ -50,7 +50,7 @@
 	}
 
 	.page-title {
-		@apply my-16 text-4xl md:text-5xl;
+		@apply mb-8 mt-16 text-4xl md:text-5xl;
 	}
 
 	.button {
