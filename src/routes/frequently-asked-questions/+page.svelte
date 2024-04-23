@@ -11,7 +11,7 @@
 		{
 			question: 'How long will it take to build my website or app?',
 			answer:
-				"We estimate the project timeframe based on the client's requirements. A common reason for project delays is the wait for content (images and text) from the client. Depending on the project's complexity, we typically require about 3-6 weeks to complete it.",
+				"We estimate the project time frame based on the client's requirements. A common reason for project delays is the wait for content (images and text) from the client. Depending on the project's complexity, we typically require about 3-6 weeks to complete it.",
 			isOpen: false
 		},
 		{
