@@ -4,32 +4,17 @@
 	import Icon from '@iconify/svelte';
 	import heroImage from '../images/hero.svg';
 	import testimonialsImage from '../images/yellow-blob.svg';
-	import { browser } from '$app/environment';
 
 	export let data;
 	let projectsElement: HTMLElement | null = null;
-
-	function scrollToProjects() {
-		if (projectsElement === null) {
-			console.error('Scroll target element does not exist.');
-			return;
-		}
-
-		const { y } = projectsElement.getBoundingClientRect();
-		const top = Math.floor(y);
-		setTimeout(() => {
-			window.scrollTo({
-				top,
-				behavior: 'smooth'
-			});
-		}, 200);
-	}
 </script>
 
-<section class="bg-primaryLight py-10 sm:py-24 lg:min-h-[60dvh]">
-	<div class="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
-		<div class="mr-auto place-self-center lg:col-span-7">
-			<h1 class="mb-8 text-4xl font-extrabold tracking-tight text-primaryDark lg:text-5xl">
+<section class="relative z-[1] overflow-x-hidden bg-primaryLight py-10 sm:py-24 lg:min-h-[60dvh]">
+	<div class="mx-auto grid max-w-screen-xl p-4 lg:grid-cols-12 lg:gap-4 xl:gap-2">
+		<div class="place-self-center lg:col-span-7 lg:mr-auto">
+			<h1
+				class="mb-8 mt-0 text-4xl font-extrabold tracking-tight text-primaryDark md:text-5xl lg:text-7xl"
+			>
 				We <span class="text-accentDark">speak</span> your language. <br /> We
 				<span class="text-primary">code</span> your vision.
 			</h1>
@@ -38,30 +23,15 @@
 				From stunning website designs to custom web applications, we can bring your digital vision
 				to life.
 			</p>
-			<div class="flex gap-4">
-				{#if browser}
-					<button
-						type="button"
-						class="button button--withIcon button--ghost group inline-flex items-center justify-center gap-2"
-						on:click={scrollToProjects}
-					>
-						See Our Projects
-						<Icon
-							class="transition-transform duration-150 group-hover:translate-y-[1px] group-focus:translate-y-[1px]"
-							icon="mdi:arrow-down"
-						/>
-					</button>
-				{:else}
-					<a href="/projects" class="button group inline-flex items-center gap-2">
-						See Our Projects
-					</a>
-				{/if}
-
-				<a href="/contact" class="button text-center"> Contact Us </a>
+			<div class="flex flex-col gap-4 sm:flex-row">
+				<a href="/projects" class="button text-center"> See Our Projects </a>
+				<a href="/contact" class="button button--secondary text-center"> Contact Us </a>
 			</div>
 		</div>
-		<div class="hidden lg:col-span-5 lg:mt-0 lg:flex">
-			<img src={heroImage} alt="mockup" />
+		<div
+			class="hidden sm:absolute sm:-bottom-[25%] sm:-right-[5%] sm:-z-[1] sm:block sm:opacity-25 lg:static lg:col-span-5 lg:mt-0 lg:flex lg:opacity-100"
+		>
+			<img src={heroImage} class="h-[500px] w-[500px] lg:h-auto lg:w-auto" alt="mockup" />
 		</div>
 	</div>
 </section>
