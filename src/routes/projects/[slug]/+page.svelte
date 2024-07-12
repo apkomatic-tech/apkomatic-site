@@ -33,7 +33,7 @@
 			<h1 class="mb-4 text-4xl">{project.name}</h1>
 			<p>{project.description}</p>
 			<div class="mt-8 grid grid-cols-1 gap-4 @lg:grid-cols-2">
-				<a href="/projects" class="button button--ghost button--withIcon">
+				<a href="/projects" class="button button--secondary button--withIcon">
 					<Icon icon="radix-icons:pin-left" class="text-2xl" /> View All Projects
 				</a>
 				<a
