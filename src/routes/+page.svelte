@@ -2,7 +2,7 @@
 	import Testimonial from '$lib/components/Testimonial.svelte';
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder';
 	import Icon from '@iconify/svelte';
-	import heroImage from '../images/hero.svg';
+	import heroImage from '../images/layered-waves.svg';
 	import testimonialsImage from '../images/yellow-blob.svg';
 
 	import { superForm } from 'sveltekit-superforms/client';
@@ -24,117 +24,121 @@
 	});
 </script>
 
-<section class="relative z-[1] overflow-x-hidden bg-primaryLight py-4 lg:min-h-[60dvh]">
-	<div class="mx-auto grid max-w-screen-xl gap-6 p-4 md:grid-cols-2 md:gap-8 lg:gap-16">
-		<div class="flex-1 pt-7">
-			<h1 class="mb-8 mt-0 text-4xl font-extrabold tracking-tight text-primaryDark lg:text-5xl">
-				We <span class="text-accentDark">speak</span> your language. <br /> We
-				<span class="text-primary">code</span> your vision.
-			</h1>
-			<p class="mb-6 max-w-2xl text-xl text-slate-500 lg:mb-8">
-				Unleash the full potential of your online presence with our expert web development services.
-				From stunning website designs to custom web applications, we can bring your digital vision
-				to life.
-			</p>
-			<div class="flex flex-col gap-4 sm:flex-row">
-				<a href="/projects" class="button button--secondary w-full text-center lg:w-auto">
-					See Our Projects
-				</a>
+<section class="relative z-[1] overflow-x-hidden bg-primaryLight py-8 lg:min-h-[60dvh]">
+	<img
+		src={heroImage}
+		alt="Layered Waves"
+		class="absolute top-0 -z-[1] h-full w-full object-cover"
+	/>
+	<div class="mx-auto grid max-w-screen-2xl gap-8 p-4 md:grid-cols-2 lg:gap-16">
+		<div class="flex flex-1 items-center">
+			<div>
+				<h1
+					class="mb-4 mt-0 text-4xl font-extrabold leading-loose tracking-tight text-primaryLight md:text-5xl lg:mb-8 lg:text-6xl"
+				>
+					Let us code your vision.
+				</h1>
+				<p class="mb-6 max-w-2xl text-xl text-white/80 lg:mb-8">
+					Unleash the full potential of your online presence with our expert web development
+					services. From stunning website designs to custom web applications, we can bring your
+					digital vision to life.
+				</p>
+				<div class="flex flex-col gap-4 sm:flex-row">
+					<a href="/projects" class="button button--alt w-full text-center lg:w-auto">
+						See Our Projects
+					</a>
+				</div>
 			</div>
 		</div>
 		<!-- Contact Form -->
-		<div class="flex-1 basis-80 rounded-md bg-white p-8 shadow-sm">
+		<div class="flex-1 basis-80 rounded-md bg-white p-8 shadow-md">
 			<div>
-				<div>
-					<div class="mb-4 font-serif text-xl font-bold text-primaryDark">
-						Ready to discuss your next web development project?
+				<div class="mb-6 font-serif text-xl font-bold">Let’s Build Something Great Together!</div>
+				{#if showSuccessMessage}
+					<div class="my-4 inline-flex items-center gap-2 bg-green-100 p-2">
+						<Icon width="32" height="32" icon="mdi:check-circle-outline" />
+						<span class="leading-tight"
+							><strong>Thank you!</strong> Your message has been received and we will respond to you
+							shortly.
+						</span>
 					</div>
-					{#if showSuccessMessage}
-						<div class="my-4 inline-flex items-center gap-2 bg-green-100 p-2">
-							<Icon width="32" height="32" icon="mdi:check-circle-outline" />
-							<span class="leading-tight"
-								><strong>Thank you!</strong> Your message has been received and we will respond to you
-								shortly.
-							</span>
+				{/if}
+				<form use:enhance name="contact" method="post" action="?/contact">
+					<div class="relative mb-4">
+						<label for="name" class="label"> Name: </label>
+						<input
+							type="text"
+							id="name"
+							name="contactName"
+							placeholder="Your Name"
+							class="input"
+							class:error={!!$errors.contactName}
+							bind:value={$form.contactName}
+							required
+						/>
+						{#if $errors.contactName?.length}
+							<label for="name" class="error-message">
+								<Icon icon="mdi:alert" />
+								{$errors.contactName[0]}
+							</label>
+						{/if}
+					</div>
+					<div class="relative mb-4">
+						<label for="email" class="label"> Email: </label>
+						<input
+							type="email"
+							id="email"
+							name="contactEmail"
+							placeholder="Your Email Address"
+							class="input"
+							class:error={!!$errors.contactEmail}
+							bind:value={$form.contactEmail}
+							required
+						/>
+						{#if $errors.contactEmail?.length}
+							<label for="email" class="error-message">
+								<Icon icon="mdi:alert" />
+								{$errors.contactEmail[0]}
+							</label>
+						{/if}
+					</div>
+					<div class="relative mb-4">
+						<label for="email" class="label"> Message </label>
+						<textarea
+							id="message"
+							name="contactMessage"
+							placeholder={`Message`}
+							rows={5}
+							class="input"
+							class:error={!!$errors.contactMessage}
+							required
+							maxlength={MESSAGE_CHAR_LIMIT}
+							bind:value={$form.contactMessage}
+						/>
+						<div class="mt-2 text-xs text-slate-500">
+							Maximum message length is {MESSAGE_CHAR_LIMIT} characters
+						</div>
+						{#if $errors.contactMessage?.length}
+							<label for="message" class="error-message">
+								<Icon icon="mdi:alert" />
+								{$errors.contactMessage[0]}
+							</label>
+						{/if}
+					</div>
+					{#if $message}
+						<div class="my-2 flex items-center gap-2 bg-red-100 p-2 text-red-700">
+							<Icon icon="mdi:alert" />
+							{$message}
 						</div>
 					{/if}
-					<form use:enhance name="contact" method="post" action="?/contact">
-						<div class="relative mb-4">
-							<label for="name" class="label"> Name: </label>
-							<input
-								type="text"
-								id="name"
-								name="contactName"
-								placeholder="Your Name"
-								class="input"
-								class:error={!!$errors.contactName}
-								bind:value={$form.contactName}
-								required
-							/>
-							{#if $errors.contactName?.length}
-								<label for="name" class="error-message">
-									<Icon icon="mdi:alert" />
-									{$errors.contactName[0]}
-								</label>
-							{/if}
-						</div>
-						<div class="relative mb-4">
-							<label for="email" class="label"> Email: </label>
-							<input
-								type="email"
-								id="email"
-								name="contactEmail"
-								placeholder="Your Email Address"
-								class="input"
-								class:error={!!$errors.contactEmail}
-								bind:value={$form.contactEmail}
-								required
-							/>
-							{#if $errors.contactEmail?.length}
-								<label for="email" class="error-message">
-									<Icon icon="mdi:alert" />
-									{$errors.contactEmail[0]}
-								</label>
-							{/if}
-						</div>
-						<div class="relative mb-4">
-							<label for="email" class="label"> Message </label>
-							<textarea
-								id="message"
-								name="contactMessage"
-								placeholder={`Message`}
-								rows={5}
-								class="input"
-								class:error={!!$errors.contactMessage}
-								required
-								maxlength={MESSAGE_CHAR_LIMIT}
-								bind:value={$form.contactMessage}
-							/>
-							<div class="mt-2 text-xs text-slate-500">
-								Maximum message length is {MESSAGE_CHAR_LIMIT} characters
-							</div>
-							{#if $errors.contactMessage?.length}
-								<label for="message" class="error-message">
-									<Icon icon="mdi:alert" />
-									{$errors.contactMessage[0]}
-								</label>
-							{/if}
-						</div>
-						{#if $message}
-							<div class="my-2 flex items-center gap-2 bg-red-100 p-2 text-red-700">
-								<Icon icon="mdi:alert" />
-								{$message}
-							</div>
-						{/if}
-						<button
-							type="submit"
-							disabled={$submitting}
-							class="button block w-full px-16 disabled:opacity-50"
-						>
-							{$submitting ? 'Sending...' : 'Send'}
-						</button>
-					</form>
-				</div>
+					<button
+						type="submit"
+						disabled={$submitting}
+						class="button block w-full px-16 disabled:opacity-50"
+					>
+						{$submitting ? 'Sending...' : 'Send'}
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -256,9 +260,21 @@
 	/>
 </div>
 
+<!-- CTA -->
+<div class="bg-primaryDark py-16 lg:py-32">
+	<div class="wrapper flex max-w-2xl flex-col items-center justify-center gap-4 text-center">
+		<h3 class="text-4xl font-bold text-accentLight">Ready to Elevate Your Online Presence?</h3>
+		<p class="text-white/90">
+			Our expert web development team creates stunning, functional websites tailored to your needs.
+			Let’s bring your vision to life.
+		</p>
+		<a href="/contact" class="button button--secondaryLight">Contact Us Today</a>
+	</div>
+</div>
+
 <style lang="postcss">
 	.input {
-		@apply block w-full rounded-md border-none bg-primaryLight p-2 shadow-sm focus:border-primary;
+		@apply block w-full rounded-md border-primary/10 bg-primaryLight p-2 focus:border-primary;
 	}
 	.input.error {
 		@apply border-red-500;
