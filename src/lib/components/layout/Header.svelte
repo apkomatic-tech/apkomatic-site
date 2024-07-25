@@ -29,6 +29,11 @@
 			href: '/projects'
 		},
 		{
+			id: 'contact',
+			label: 'Contact',
+			href: '/contact'
+		},
+		{
 			id: 'faq',
 			label: 'FAQ',
 			href: '/frequently-asked-questions'
