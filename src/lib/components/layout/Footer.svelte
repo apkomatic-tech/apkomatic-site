@@ -3,7 +3,7 @@
 </script>
 
 <footer>
-	<div class="wrapper border-t border-slate-200 py-8">
+	<div class="wrapper mb-0 border-t border-slate-200 py-6">
 		<div class="text-center text-sm text-slate-700">
 			&copy; {new Date().getFullYear()}, Apkomatic
 		</div>

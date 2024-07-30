@@ -2,7 +2,7 @@
 
 ## Overview
 
-Apkomatic is a company that specializes in software development and web design. The website is built using SvelteKit, a modern framework for building web applications with a React-like syntax. It features the following pages:
+Apkomatic is a company that specializes in software development and web design. The website is built using SvelteKit, a modern framework for building web applications. It features the following pages:
 
 - Home: A brief introduction to Apkomatic and its services.
 - Services: A description of the different services offered by Apkomatic, including website maintenance, search engine optimization, and analytics and reporting.
