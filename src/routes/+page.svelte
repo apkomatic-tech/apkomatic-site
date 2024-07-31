@@ -34,7 +34,7 @@
 		<div class="flex flex-1 items-center">
 			<div>
 				<h1
-					class="mb-4 mt-0 text-4xl font-extrabold leading-loose tracking-tight text-primaryLight md:text-5xl lg:mb-8 lg:text-6xl"
+					class="mb-4 mt-0 text-4xl font-extrabold tracking-tight text-primaryLight md:text-5xl lg:mb-8 lg:text-6xl"
 				>
 					Let us code your vision.
 				</h1>
