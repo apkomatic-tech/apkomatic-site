@@ -7,6 +7,7 @@
 
 	import { superForm } from 'sveltekit-superforms/client';
 	import { COMPANY_NAME, MESSAGE_CHAR_LIMIT } from '$lib/config';
+	import Slider from '$lib/components/Slider.svelte';
 
 	export let data;
 	let showSuccessMessage = false;
@@ -246,11 +247,7 @@
 	<div class="wrapper relative z-10 px-6 md:px-2">
 		<h3 class="text-4xl text-black md:text-center">What clients say about us</h3>
 		<div class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-black sm:mx-auto sm:my-12" />
-		<div class="grid gap-[30px] md:grid-cols-2 lg:grid-cols-3">
-			{#each data.testimonials as testimonial}
-				<Testimonial data={testimonial} />
-			{/each}
-		</div>
+		<Slider items={data.testimonials} />
 	</div>
 	<img
 		aria-hidden
