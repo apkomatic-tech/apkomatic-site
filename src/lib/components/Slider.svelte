@@ -9,9 +9,7 @@
 	export let items: TestimonialType[];
 
 	const sliderOptions: EmblaOptionsType = {
-		// loop: true,
 		slidesToScroll: 'auto'
-		// duration: 10
 	};
 	let emblaAPI: EmblaCarouselType;
 	let canScrollNext = true;
