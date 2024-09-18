@@ -46,6 +46,8 @@
 		"@sanity/client": "^6.4.12",
 		"@sanity/image-url": "^1.0.2",
 		"@tailwindcss/container-queries": "^0.1.1",
+		"embla-carousel": "^8.3.0",
+		"embla-carousel-svelte": "^8.2.1",
 		"groqd": "^0.15.9"
 	}
 }
