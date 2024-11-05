@@ -46,16 +46,16 @@ export const actions = {
 
 			// on successful submission redirect to confirmation page
 			if (contactRequest.ok) {
-				throw redirect(303, '/contact/confirmation');
+				redirect(303, '/contact/confirmation');
 			} else {
-				throw error(401, {
-					message: 'We are unable to process your request. Please try again later.'
-				});
+				error(401, {
+                					message: 'We are unable to process your request. Please try again later.'
+                				});
 			}
 		} else {
-			throw error(500, {
-				message: 'We are unable to process your request. Please try again later.'
-			});
+			error(500, {
+            				message: 'We are unable to process your request. Please try again later.'
+            			});
 		}
 	}
 };

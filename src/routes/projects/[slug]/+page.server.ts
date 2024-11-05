@@ -22,9 +22,9 @@ export const load = async ({ params }) => {
 	const [project] = data;
 
 	if (!project) {
-		throw error(404, {
-			message: `Project "${slug.replaceAll('-', ' ')}" was not found`
-		});
+		error(404, {
+        			message: `Project "${slug.replaceAll('-', ' ')}" was not found`
+        		});
 	}
 
 	return {
