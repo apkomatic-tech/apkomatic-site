@@ -1,10 +1,15 @@
-<script>
+<script lang="ts">
 	import Header from '$lib/components/layout/Header.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import '../app.css';
 	import { onNavigate } from '$app/navigation';
 	import { COMPANY_NAME } from '$lib/config';
 	import Analytics from '$lib/components/Analytics.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	onNavigate((navigation) => {
 		// Do nothing if view transition API is not supported
@@ -34,6 +39,6 @@
 <Analytics />
 <Header />
 <main>
-	<slot />
+	{@render children?.()}
 </main>
 <Footer />

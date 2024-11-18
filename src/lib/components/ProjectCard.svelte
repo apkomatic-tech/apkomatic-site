@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder';
 	import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
-	type ProjectItemProps = {
+	type ItemProps = {
 		id?: string;
 		name?: string;
 		description?: string;
@@ -12,14 +12,14 @@
 		imageHeight?: number;
 	};
 
-	export let item: ProjectItemProps;
+	let { item }: { item: ItemProps } = $props();
 	const imageWidth = item.imageWidth || 1600;
 	const imageHeight = item.imageHeight || 1200;
 	let imageUrl = item.imageSource
 		? buildUrlFromImageSource(item.imageSource, {
 				width: imageWidth,
 				height: imageHeight
-		  })
+			})
 		: null;
 </script>
 

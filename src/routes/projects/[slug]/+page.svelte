@@ -3,9 +3,9 @@
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder.js';
 	import Icon from '@iconify/svelte';
 
-	export let data;
+	let { data } = $props();
 
-	const project = data.project;
+	const { project } = data;
 	const projectImageWidth = 1600;
 	const projectImageHeight = 1200;
 	const projectImageUrl = buildUrlFromImageSource(data.project.thumb, {

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { afterNavigate } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
@@ -39,7 +41,7 @@
 			href: '/frequently-asked-questions'
 		}
 	];
-	let isMobileMenuOpen = false;
+	let isMobileMenuOpen = $state(false);
 
 	function toggleMenu() {
 		isMobileMenuOpen = !isMobileMenuOpen;
@@ -54,7 +56,7 @@
 		isMobileMenuOpen = false;
 	});
 
-	$: {
+	run(() => {
 		if (browser) {
 			if (isMobileMenuOpen) {
 				document.body.classList.add('overflow-hidden', 'touch-none');
@@ -62,7 +64,7 @@
 				document.body.classList.remove('overflow-hidden', 'touch-none');
 			}
 		}
-	}
+	});
 </script>
 
 <header class="site-header relative z-[9999]">
@@ -72,7 +74,7 @@
 		<button
 			type="button"
 			class="block translate-x-[6px] p-[6px] text-[40px] sm:hidden"
-			on:click={toggleMenu}
+			onclick={toggleMenu}
 			aria-label="Menu"
 			aria-controls="nav-menu"
 		>
@@ -91,7 +93,7 @@
 						<span
 							aria-hidden
 							class="marker bottom-0 left-0 right-0 block h-[3px] translate-y-[3px] rounded-sm bg-black"
-						/>
+						></span>
 					{/if}</a
 				>
 			{/each}
@@ -108,7 +110,7 @@
 					<button
 						type="button"
 						class="inline-flex translate-x-[6px] items-center place-self-center p-[6px] text-center text-4xl leading-none text-black"
-						on:click={closeMobileNav}
+						onclick={closeMobileNav}
 					>
 						<span class="sr-only">Close</span>
 						<Icon icon="iconamoon:close" />

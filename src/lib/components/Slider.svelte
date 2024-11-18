@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import type { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel';
 	import type { TestimonialType } from '$lib/types/TestimonialType';
 
@@ -6,16 +8,20 @@
 	import Testimonial from './Testimonial.svelte';
 	import Icon from '@iconify/svelte';
 
-	export let items: TestimonialType[];
+	interface Props {
+		items: TestimonialType[];
+	}
+
+	let { items }: Props = $props();
 
 	const sliderOptions: EmblaOptionsType = {
 		slidesToScroll: 'auto'
 	};
-	let emblaAPI: EmblaCarouselType;
-	let canScrollNext = true;
-	let canScrollPrev = false;
-	let scrollSnapList: number[] = [];
-	let activeIndex = 0;
+	let emblaAPI: EmblaCarouselType = $state();
+	let canScrollNext = $state(true);
+	let canScrollPrev = $state(false);
+	let scrollSnapList: number[] = $state([]);
+	let activeIndex = $state(0);
 
 	function updateCarouselState() {
 		canScrollPrev = emblaAPI.canScrollPrev();
@@ -41,7 +47,7 @@
 			options: sliderOptions,
 			plugins: []
 		}}
-		on:emblaInit={emblaInit}
+		onemblaInit={emblaInit}
 	>
 		<div class="embla__container">
 			{#each items as item}
@@ -55,7 +61,7 @@
 		class="embla__arrow embla__prev hidden disabled:pointer-events-none disabled:cursor-none disabled:opacity-10 md:block"
 		aria-label="Previous"
 		disabled={!canScrollPrev}
-		on:click|preventDefault={handlePrev}
+		onclick={preventDefault(handlePrev)}
 	>
 		<Icon icon="mdi:chevron-left" />
 		<span class="sr-only">Previous</span>
@@ -64,7 +70,7 @@
 		class="embla__arrow embla__next hidden disabled:pointer-events-none disabled:cursor-none disabled:opacity-10 md:block"
 		aria-label="Next"
 		disabled={!canScrollNext}
-		on:click|preventDefault={handleNext}
+		onclick={preventDefault(handleNext)}
 	>
 		<Icon icon="mdi:chevron-right" />
 		<span class="sr-only">Next</span>
@@ -78,8 +84,8 @@
 				class:cursor-default={isActive}
 				class:bg-black={isActive}
 				aria-label={`slide ${index + 1}`}
-				on:click={() => emblaAPI.scrollTo(index)}
-			/>
+				onclick={() => emblaAPI.scrollTo(index)}
+			></button>
 		{/each}
 	</div>
 </div>

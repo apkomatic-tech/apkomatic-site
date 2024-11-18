@@ -6,11 +6,11 @@
 	import testimonialsImage from '../images/yellow-blob.svg';
 
 	import { superForm } from 'sveltekit-superforms/client';
-	import { COMPANY_NAME, MESSAGE_CHAR_LIMIT } from '$lib/config';
+	import { MESSAGE_CHAR_LIMIT } from '$lib/config';
 	import Slider from '$lib/components/Slider.svelte';
 
-	export let data;
-	let showSuccessMessage = false;
+	let { data } = $props();
+	let showSuccessMessage = $state(false);
 
 	const { form, enhance, errors, submitting, message, reset } = superForm(data.contactForm, {
 		onError({ result }) {
@@ -115,7 +115,7 @@
 							required
 							maxlength={MESSAGE_CHAR_LIMIT}
 							bind:value={$form.contactMessage}
-						/>
+						></textarea>
 						<div class="mt-2 text-xs text-slate-500">
 							Maximum message length is {MESSAGE_CHAR_LIMIT} characters
 						</div>
@@ -150,7 +150,9 @@
 	<div class="wrapper px-6 md:px-2">
 		<h2 class="text-4xl text-black md:text-center">Expertly Designed. Expertly Built.</h2>
 		<!-- spacer -->
-		<div class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-accent sm:mx-auto sm:my-12" />
+		<div
+			class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-accent sm:mx-auto sm:my-12"
+		></div>
 
 		<div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each data.projects as project}
@@ -187,7 +189,9 @@
 		<h3 class="text-4xl text-accentLight md:text-center">
 			Unleash the full potential of your online presence.
 		</h3>
-		<div class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-accent sm:mx-auto sm:my-12" />
+		<div
+			class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-accent sm:mx-auto sm:my-12"
+		></div>
 
 		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 			<div class="rounded-md bg-primary p-6 shadow-md">
@@ -246,11 +250,13 @@
 <div class="relative bg-accentLight py-8">
 	<div class="wrapper relative z-10 px-6 md:px-2">
 		<h3 class="text-4xl text-black md:text-center">What clients say about us</h3>
-		<div class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-black sm:mx-auto sm:my-12" />
+		<div
+			class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-black sm:mx-auto sm:my-12"
+		></div>
 		<Slider items={data.testimonials} />
 	</div>
 	<img
-		aria-hidden
+		aria-hidden="true"
 		class="absolute inset-0 h-full w-full object-cover"
 		src={testimonialsImage}
 		alt=""

@@ -1,8 +1,12 @@
 <script lang="ts">
 	import type { TestimonialType } from '$lib/types/TestimonialType';
 
-	export let data: TestimonialType;
-	export let centeredClass: string = '';
+	interface Props {
+		data: TestimonialType;
+		centeredClass?: string;
+	}
+
+	let { data, centeredClass = '' }: Props = $props();
 </script>
 
 <div
@@ -11,7 +15,7 @@
 	<p class="text-slate-700">
 		{data.content}
 	</p>
-	<div class="my-7 ml-auto h-[6px] w-1/6 rounded-lg bg-primaryLight" />
+	<div class="my-7 ml-auto h-[6px] w-1/6 rounded-lg bg-primaryLight"></div>
 	<div class="text-right">
 		{#if data.author}
 			<div class="font-serif font-bold text-primaryDark xl:text-lg">{data.author}</div>
