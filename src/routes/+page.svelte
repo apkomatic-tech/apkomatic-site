@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Testimonial from '$lib/components/Testimonial.svelte';
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder';
 	import Icon from '@iconify/svelte';
 	import heroImage from '../images/layered-waves.svg';
@@ -7,14 +6,14 @@
 
 	import { superForm } from 'sveltekit-superforms/client';
 	import { MESSAGE_CHAR_LIMIT } from '$lib/config';
-	import Slider from '$lib/components/Slider.svelte';
+	import Testimonials from '$lib/components/Testimonials.svelte';
 
 	let { data } = $props();
 	let showSuccessMessage = $state(false);
 
 	const { form, enhance, errors, submitting, message, reset } = superForm(data.contactForm, {
 		onError({ result }) {
-			$message = result.error.message;
+			message.set(result.error.message);
 		},
 		onUpdated(event) {
 			if (event.form.valid) {
@@ -253,7 +252,7 @@
 		<div
 			class="my-8 w-1/4 max-w-sm rounded-lg border-b-[8px] border-black sm:mx-auto sm:my-12"
 		></div>
-		<Slider items={data.testimonials} />
+		<Testimonials items={data.testimonials} />
 	</div>
 	<img
 		aria-hidden="true"
