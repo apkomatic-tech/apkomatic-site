@@ -3,19 +3,22 @@
 	import type { TestimonialType } from '$lib/types/TestimonialType';
 
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
-	import Testimonial from './Testimonial.svelte';
 	import Icon from '@iconify/svelte';
 
-	export let items: TestimonialType[];
+	interface Props {
+		items: TestimonialType[];
+	}
+
+	let { items }: Props = $props();
 
 	const sliderOptions: EmblaOptionsType = {
 		slidesToScroll: 'auto'
 	};
 	let emblaAPI: EmblaCarouselType;
-	let canScrollNext = true;
-	let canScrollPrev = false;
-	let scrollSnapList: number[] = [];
-	let activeIndex = 0;
+	let canScrollNext = $state(true);
+	let canScrollPrev = $state(false);
+	let scrollSnapList: number[] = $state([]);
+	let activeIndex = $state(0);
 
 	function updateCarouselState() {
 		canScrollPrev = emblaAPI.canScrollPrev();
@@ -24,15 +27,38 @@
 		activeIndex = emblaAPI.selectedScrollSnap();
 	}
 
-	function emblaInit(event: CustomEvent<EmblaCarouselType>) {
+	function initSlider(event: CustomEvent<EmblaCarouselType>) {
 		emblaAPI = event.detail;
 		updateCarouselState();
 		emblaAPI.on('select', updateCarouselState);
 	}
 
-	const handlePrev = () => emblaAPI.scrollPrev();
-	const handleNext = () => emblaAPI.scrollNext();
+	const handlePrev = (e: MouseEvent) => {
+		e.preventDefault();
+		emblaAPI.scrollPrev();
+	};
+	const handleNext = (e: MouseEvent) => {
+		e.preventDefault();
+		emblaAPI.scrollNext();
+	};
 </script>
+
+{#snippet Testimonial({ content, author, company }: TestimonialType)}
+	<div class="relative z-[1] h-full overflow-hidden rounded-md bg-white px-10 py-12 shadow-md">
+		<p class="text-slate-700">
+			{content}
+		</p>
+		<div class="my-7 ml-auto h-[6px] w-1/6 rounded-lg bg-primaryLight"></div>
+		<div class="text-right">
+			{#if author}
+				<div class="font-serif font-bold text-primaryDark xl:text-lg">{author}</div>
+			{/if}
+			{#if company}
+				<div class="text-sm text-slate-500">{company}</div>
+			{/if}
+		</div>
+	</div>
+{/snippet}
 
 <div class="embla">
 	<div
@@ -41,12 +67,13 @@
 			options: sliderOptions,
 			plugins: []
 		}}
-		on:emblaInit={emblaInit}
+		onemblaInit={initSlider}
+		{...{ onemblaInit: initSlider } as any}
 	>
 		<div class="embla__container">
 			{#each items as item}
 				<div class="embla__slide">
-					<Testimonial data={item} />
+					{@render Testimonial(item)}
 				</div>
 			{/each}
 		</div>
@@ -55,7 +82,7 @@
 		class="embla__arrow embla__prev hidden disabled:pointer-events-none disabled:cursor-none disabled:opacity-10 md:block"
 		aria-label="Previous"
 		disabled={!canScrollPrev}
-		on:click|preventDefault={handlePrev}
+		onclick={handlePrev}
 	>
 		<Icon icon="mdi:chevron-left" />
 		<span class="sr-only">Previous</span>
@@ -64,7 +91,7 @@
 		class="embla__arrow embla__next hidden disabled:pointer-events-none disabled:cursor-none disabled:opacity-10 md:block"
 		aria-label="Next"
 		disabled={!canScrollNext}
-		on:click|preventDefault={handleNext}
+		onclick={handleNext}
 	>
 		<Icon icon="mdi:chevron-right" />
 		<span class="sr-only">Next</span>
@@ -78,8 +105,8 @@
 				class:cursor-default={isActive}
 				class:bg-black={isActive}
 				aria-label={`slide ${index + 1}`}
-				on:click={() => emblaAPI.scrollTo(index)}
-			/>
+				onclick={() => emblaAPI.scrollTo(index)}
+			></button>
 		{/each}
 	</div>
 </div>

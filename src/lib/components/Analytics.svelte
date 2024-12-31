@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
-	$: {
+	onMount(() => {
+		console.log('Analytics loaded');
 		// @ts-ignore
 		if (typeof gtag !== 'undefined') {
 			// @ts-ignore
@@ -10,7 +12,7 @@
 				page_path: $page.url.pathname
 			});
 		}
-	}
+	});
 </script>
 
 <svelte:head>

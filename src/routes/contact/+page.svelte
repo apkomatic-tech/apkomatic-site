@@ -3,7 +3,7 @@
 	import { COMPANY_NAME, MESSAGE_CHAR_LIMIT } from '$lib/config';
 	import Icon from '@iconify/svelte';
 
-	export let data;
+	let { data } = $props();
 	const { form, enhance, errors, submitting, message } = superForm(data.form, {
 		onError({ result }) {
 			$message = result.error.message;
@@ -82,7 +82,7 @@
 					required
 					maxlength={MESSAGE_CHAR_LIMIT}
 					bind:value={$form.contactMessage}
-				/>
+				></textarea>
 				{#if $errors.contactMessage?.length}
 					<label for="message" class="error-message">
 						<Icon icon="mdi:alert" />

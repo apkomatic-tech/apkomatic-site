@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { COMPANY_NAME } from '$lib/config';
 
-	type FaqRow = {
+	let rows: Array<{
 		question: string;
 		answer: string;
 		isOpen: boolean;
-	};
-
-	let rows: Array<FaqRow> = [
+	}> = $state([
 		{
 			question: 'How long will it take to build my website or app?',
 			answer:
@@ -31,7 +29,7 @@
 				'We discuss pricing at the beginning of the project. If you change or add new requirements after the project sign-off, we will need to determine a new quote based on the requirements. We will communicate this information to you before resuming work.',
 			isOpen: false
 		}
-	];
+	]);
 
 	function toggleRow(index: number) {
 		rows = rows.map((oi, i) => {
@@ -56,7 +54,7 @@
 					<button
 						type="button"
 						class="flex w-full items-center justify-between gap-6 py-4"
-						on:click={() => toggleRow(index)}
+						onclick={() => toggleRow(index)}
 					>
 						<span class="text-left">
 							{row.question}

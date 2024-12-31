@@ -75,9 +75,9 @@ export const actions = {
 					form
 				};
 			} else {
-				throw error(401, {
-					message: 'We are unable to process your request. Please try again later.'
-				});
+				error(401, {
+                					message: 'We are unable to process your request. Please try again later.'
+                				});
 			}
 		}
 	}

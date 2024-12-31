@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { afterNavigate } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
@@ -39,7 +41,7 @@
 			href: '/frequently-asked-questions'
 		}
 	];
-	let isMobileMenuOpen = false;
+	let isMobileMenuOpen = $state(false);
 
 	function toggleMenu() {
 		isMobileMenuOpen = !isMobileMenuOpen;
@@ -54,7 +56,7 @@
 		isMobileMenuOpen = false;
 	});
 
-	$: {
+	run(() => {
 		if (browser) {
 			if (isMobileMenuOpen) {
 				document.body.classList.add('overflow-hidden', 'touch-none');
@@ -62,17 +64,19 @@
 				document.body.classList.remove('overflow-hidden', 'touch-none');
 			}
 		}
-	}
+	});
 </script>
 
-<header class="site-header relative z-[9999]">
-	<div class="wrapper mb-0 flex items-center justify-between px-6 py-4">
+<header class="site-header relative z-[9999] px-4">
+	<div
+		class="max-w-screen-2xl mx-auto mb-0 flex items-center justify-between py-4 px-0 border-b-[4px] border-primaryLighter"
+	>
 		<SiteLogo />
 		<!-- Mobile menu toggle -->
 		<button
 			type="button"
 			class="block translate-x-[6px] p-[6px] text-[40px] sm:hidden"
-			on:click={toggleMenu}
+			onclick={toggleMenu}
 			aria-label="Menu"
 			aria-controls="nav-menu"
 		>
@@ -91,7 +95,7 @@
 						<span
 							aria-hidden
 							class="marker bottom-0 left-0 right-0 block h-[3px] translate-y-[3px] rounded-sm bg-black"
-						/>
+						></span>
 					{/if}</a
 				>
 			{/each}
@@ -100,27 +104,29 @@
 		<!-- Mobile Navigation -->
 		{#if isMobileMenuOpen}
 			<div
-				in:slide={{ axis: 'x', duration: 100, easing: quartIn }}
-				out:slide={{ axis: 'x', duration: 100, easing: quartOut }}
-				class="fixed right-0 top-0 z-50 h-full w-full bg-primaryLight px-6 pb-2 sm:hidden"
+				in:slide={{ axis: 'x', duration: 50, easing: quartIn }}
+				out:slide={{ axis: 'x', duration: 50, easing: quartOut }}
+				class="fixed right-0 top-0 z-50 h-full w-full bg-white px-6 pb-2 sm:hidden"
 			>
 				<div class="flex h-[96px] items-start justify-end">
 					<button
 						type="button"
 						class="inline-flex translate-x-[6px] items-center place-self-center p-[6px] text-center text-4xl leading-none text-black"
-						on:click={closeMobileNav}
+						onclick={closeMobileNav}
 					>
 						<span class="sr-only">Close</span>
 						<Icon icon="iconamoon:close" />
 					</button>
 				</div>
-				<nav class="grid grid-flow-row-dense gap-1 border-t border-white border-opacity-10 pt-4">
+				<nav
+					class="grid justify-center grid-flow-row-dense border-t border-white border-opacity-10 pt-4 gap-4"
+				>
 					{#each navLinks as { id, label, href }}
 						<a
-							class="inline-block rounded-md px-4 py-2 font-sans text-base font-semibold hover:bg-[rgba(0,0,0,.16)] hover:bg-primaryDark hover:text-white hover:text-opacity-100 {$page
-								.url.pathname === href
-								? ' bg-primaryDark text-white'
-								: 'text-slate-600'}"
+							class="inline-block w-fit font-sans text-2xl font-semibold border-b-4 {$page.url
+								.pathname === href
+								? ' border-primaryLighter'
+								: 'border-transparent'}"
 							{href}>{label}</a
 						>
 					{/each}
