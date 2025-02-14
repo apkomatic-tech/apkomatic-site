@@ -68,9 +68,7 @@
 </script>
 
 <header class="site-header relative z-[9999] px-4">
-	<div
-		class="max-w-screen-2xl mx-auto mb-0 flex items-center justify-between py-4 px-0 border-b-[4px] border-primaryLighter"
-	>
+	<div class={`max-w-screen-2xl mx-auto mb-0 flex items-center justify-between py-4 px-0`}>
 		<SiteLogo />
 		<!-- Mobile menu toggle -->
 		<button
@@ -93,7 +91,7 @@
 					>{label}
 					{#if isCurrentPage}
 						<span
-							aria-hidden
+							aria-hidden="true"
 							class="marker bottom-0 left-0 right-0 block h-[3px] translate-y-[3px] rounded-sm bg-black"
 						></span>
 					{/if}</a
