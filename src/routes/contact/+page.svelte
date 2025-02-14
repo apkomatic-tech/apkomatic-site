@@ -96,7 +96,11 @@
 					{$message}
 				</div>
 			{/if}
-			<button type="submit" disabled={$submitting} class="button block px-16 disabled:opacity-50">
+			<button
+				type="submit"
+				disabled={$submitting}
+				class="button button--primary block px-16 disabled:opacity-50"
+			>
 				{$submitting ? 'Sending...' : 'Send'}
 			</button>
 		</form>
