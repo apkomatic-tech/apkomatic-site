@@ -30,29 +30,23 @@
 			/>
 		</div>
 		<div class="@container">
-			<h1 class="mb-4 text-4xl">{project.name}</h1>
-			<p>{project.description}</p>
-			<div class="mt-8 grid grid-cols-1 gap-4 @lg:grid-cols-2">
-				<a href="/projects" class="button button--secondary button--withIcon">
-					<Icon icon="radix-icons:pin-left" class="text-2xl" /> View All Projects
+			<div class="mb-4">
+				<a href="/projects" class="button button--ghost button--withIcon">
+					<span>&larr;</span> See All Projects
 				</a>
+			</div>
+			<h1 class="mb-4 text-4xl lg:text-6xl">{project.name}</h1>
+			<p>{project.description}</p>
+			<div class="mt-8">
 				<a
 					href={project.url}
 					target="_blank"
-					class="button button--withIcon"
+					class="button button--alt text-center"
 					rel="noreferrer noopener"
 				>
-					View this project <span class="link-icon-wrapper">
-						<Icon icon="ph:link-light" class="text-2xl" />
-					</span>
+					View this project
 				</a>
 			</div>
 		</div>
 	</div>
 </section>
-
-<style>
-	.link-icon-wrapper {
-		transform: rotate(0.2turn);
-	}
-</style>
