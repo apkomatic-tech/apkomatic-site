@@ -36,7 +36,7 @@
 			href: '/contact'
 		},
 		{
-			id: 'faq',
+			id: 'frequently-asked-questions',
 			label: 'FAQ',
 			href: '/frequently-asked-questions'
 		}
@@ -84,12 +84,13 @@
 		<!-- Desktop Navigation -->
 		<nav class="hidden grid-flow-col sm:grid sm:gap-3 md:gap-8">
 			{#each navLinks as { id, label, href }}
-				{@const isCurrentPage = $page.url.pathname === href}
+				{@const isHomepage = $page.url.pathname === '/' && id === 'home'}
+				{@const isCurrentPage = $page.url.pathname.replaceAll('/', '').includes(id)}
 				<a
 					class="relative leading-none text-black transition-opacity duration-300 hover:opacity-75"
 					{href}
 					>{label}
-					{#if isCurrentPage}
+					{#if isCurrentPage || isHomepage}
 						<span
 							aria-hidden="true"
 							class="marker bottom-0 left-0 right-0 block h-[3px] translate-y-[3px] rounded-sm bg-black"
@@ -120,9 +121,11 @@
 					class="grid justify-center grid-flow-row-dense border-t border-white border-opacity-10 pt-4 gap-4"
 				>
 					{#each navLinks as { id, label, href }}
+						{@const isHomepage = $page.url.pathname === '/' && id === 'home'}
+						{@const isCurrentPage = $page.url.pathname.replaceAll('/', '').includes(id)}
 						<a
-							class="inline-block w-fit font-sans text-2xl font-semibold border-b-4 {$page.url
-								.pathname === href
+							class="inline-block w-fit font-sans text-2xl font-semibold border-b-4 {isCurrentPage ||
+							isHomepage
 								? ' border-primaryLighter'
 								: 'border-transparent'}"
 							{href}>{label}</a
