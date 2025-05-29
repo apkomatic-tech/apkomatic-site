@@ -9,7 +9,15 @@
 
 <section class="wrapper">
 	<h1 class="page-title">About Us</h1>
-	<div class="grid gap-16 lg:grid-cols-[2fr_minmax(400px,_1fr)]">
+	<div class="grid gap-6 lg:gap-16 grid-cols-1 lg:grid-cols-[minmax(400px,_1fr)_2fr]">
+		<figure class="">
+			<img
+				src={rocketImage}
+				class="max-w-[300px] block mx-auto lg:w-full lg:max-w-full"
+				alt=""
+				aria-hidden="true"
+			/>
+		</figure>
 		<div class="space-y-6">
 			<div class="row">
 				<h2 class="mb-6 text-2xl"><span>Who we are</span></h2>
@@ -45,9 +53,6 @@
 				</p>
 			</div>
 		</div>
-		<figure class="hidden lg:block">
-			<img src={rocketImage} class="w-full" alt="" aria-hidden />
-		</figure>
 	</div>
 </section>
 
