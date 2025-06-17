@@ -2,6 +2,7 @@
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder';
 	import Icon from '@iconify/svelte';
 	import testimonialsDecorImage from '../images/yellow-blob.svg';
+	import heroImage from '../images/hero-illustration.jpg';
 
 	import Testimonials from '$lib/components/Testimonials.svelte';
 	import type { PageData } from './$types';
@@ -10,19 +11,29 @@
 	const { projects, testimonials } = data;
 </script>
 
-<section
-	class="gradient-bg relative z-[1] overflow-hidden from-slate-300 to-black py-20 md:py-28 lg:py-32"
->
+<section class="relative z-[1] overflow-hidden to-black py-20 md:py-28 lg:py-32">
 	<div class="mx-auto max-w-screen-2xl px-4">
-		<h1
-			class="mb-4 mt-0 mx-auto text-5xl text-center xl:max-w-[50vw] font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-pink-500 md:text-6xl lg:mb-8 lg:text-7xl xl:text-9xl"
-		>
-			Let us code your vision.
-		</h1>
-		<p class="mt-4 text-center text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto text-slate-600/90">
-			Empowering businesses with innovative technology and creative design. Let's build something
-			extraordinary together.
-		</p>
+		<div class="flex gap-12">
+			<!-- hero copy -->
+			<div>
+				<h1
+					class="mb-4 mt-2 text-5xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-pink-500 md:text-6xl lg:mb-8 lg:text-7xl xl:text-8xl"
+				>
+					Let us code your vision.
+				</h1>
+				<p class="mt-4 text-lg md:text-xl lg:text-2xl max-w-2xl text-slate-600/90">
+					Empowering businesses with innovative technology and creative design. Let's build
+					something extraordinary together.
+				</p>
+				<div class="mt-6">
+					<a href="/contact" class="button button--primary">Get in touch &rarr;</a>
+				</div>
+			</div>
+			<!-- hero image -->
+			<div aria-hidden="true" class="hidden md:block object-cover">
+				<img src={heroImage} width="900" height="1350" alt="" class="w-[600px] h-auto rounded-lg" />
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -149,9 +160,3 @@
 		<a href="/contact" class="button button--primary">Contact Us Today</a>
 	</div>
 </div>
-
-<style>
-	.gradient-bg {
-		background: linear-gradient(90deg, #f9dffd 0%, #ddd9ff 100%);
-	}
-</style>
