@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { COMPANY_NAME } from '$lib/config/index.js';
 	import { buildUrlFromImageSource } from '$lib/sanity/imageUrlBuilder.js';
+	import Icon from '@iconify/svelte';
 
 	let { data } = $props();
 	let { projects } = data;
@@ -38,5 +39,22 @@
 				</div>
 			</a>
 		{/each}
+	</div>
+</div>
+
+<div class="gradient-bg py-16 px-4">
+	<div class="wrapper flex gap-6 justify-center flex-col items-center mt-0 mb-0">
+		<div class="text-xl md:text-2xl font-semibold text-center">
+			Like what you see? Let's work together!
+		</div>
+		<div>
+			<a href="/contact" class="button button--primary button--withIcon">
+				Contact Us
+				<Icon
+					icon="mdi:arrow-right"
+					class="text-inherit transition-transform duration-150 group-hover:translate-x-1 group-focus:translate-x-1"
+				/>
+			</a>
+		</div>
 	</div>
 </div>
