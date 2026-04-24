@@ -13,7 +13,8 @@ const schema = z.object({
 	contactMessage: z
 		.string({ required_error: 'Message is required' })
 		.min(1, 'Message is required')
-		.max(MESSAGE_CHAR_LIMIT, `Message cannot exceed ${MESSAGE_CHAR_LIMIT} characters`)
+		.max(MESSAGE_CHAR_LIMIT, `Message cannot exceed ${MESSAGE_CHAR_LIMIT} characters`),
+	_gotcha: z.string().optional()
 });
 
 export const load = async () => {
@@ -44,18 +45,23 @@ export const actions = {
 				}
 			});
 
+			// if the hidden field is filled out, it's likely a bot submission, so we can ignore it
+			if (form.data._gotcha && form.data._gotcha.trim() !== '') {
+				redirect(303, '/contact/confirmation');
+			}
+
 			// on successful submission redirect to confirmation page
 			if (contactRequest.ok) {
 				redirect(303, '/contact/confirmation');
 			} else {
 				error(401, {
-                					message: 'We are unable to process your request. Please try again later.'
-                				});
+					message: 'We are unable to process your request. Please try again later.'
+				});
 			}
 		} else {
 			error(500, {
-            				message: 'We are unable to process your request. Please try again later.'
-            			});
+				message: 'We are unable to process your request. Please try again later.'
+			});
 		}
 	}
 };
