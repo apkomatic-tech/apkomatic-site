@@ -26,6 +26,7 @@
 	</p>
 	<section class="my-6">
 		<form use:enhance name="contact" method="post">
+			<input type="hidden" name="_gotcha" style="display:none" />
 			<div class="relative mb-6">
 				<label for="name" class="label"> Name: </label>
 				<input
@@ -37,6 +38,7 @@
 					class:error={!!$errors.contactName}
 					bind:value={$form.contactName}
 					required
+					autocomplete="name"
 				/>
 				{#if $errors.contactName?.length}
 					<label for="name" class="error-message">
@@ -56,6 +58,7 @@
 					class:error={!!$errors.contactEmail}
 					bind:value={$form.contactEmail}
 					required
+					autocomplete="email"
 				/>
 				{#if $errors.contactEmail?.length}
 					<label for="email" class="error-message">

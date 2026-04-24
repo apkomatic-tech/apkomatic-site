@@ -37,16 +37,18 @@
 			</div>
 			<h1 class="mb-4 text-4xl lg:text-6xl">{project.name}</h1>
 			<p>{project.description}</p>
-			<div class="mt-8">
-				<a
-					href={project.url}
-					target="_blank"
-					class="button button--alt text-center"
-					rel="noreferrer noopener"
-				>
-					View this project
-				</a>
-			</div>
+			{#if project.url}
+				<div class="mt-8">
+					<a
+						href={project.url}
+						target="_blank"
+						class="button button--alt text-center"
+						rel="noreferrer noopener"
+					>
+						View this project
+					</a>
+				</div>
+			{/if}
 		</div>
 	</div>
 </section>

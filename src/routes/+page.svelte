@@ -9,6 +9,10 @@
 
 	const { data }: { data: PageData } = $props();
 	const { projects, testimonials } = data;
+
+	function getProjectHref(slug: string) {
+		return `/projects/${encodeURIComponent(slug)}`;
+	}
 </script>
 
 <section class="relative z-[1] overflow-hidden to-black py-20 md:py-28 lg:py-32">
@@ -50,7 +54,7 @@
 			{#each projects as project}
 				{@const imageUrl = buildUrlFromImageSource(project.thumb, { width: 1000, height: 600 })}
 				<a
-					href="/projects/{project.slug}"
+					href={getProjectHref(project.slug)}
 					class="group opacity-90 transition-opacity duration-300 hover:opacity-100"
 				>
 					<div class="mb-4 overflow-hidden rounded-md shadow-sm drop-shadow-sm">
